@@ -44,7 +44,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     address = models.TextField(max_length=255)
     email = models.EmailField(unique=True, null=True, blank=True)
     date_joined = models.DateTimeField(auto_now_add=True)
-    
+    image=models.ImageField(upload_to=r'images/%y/%m/%d/',blank=True, null=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     
