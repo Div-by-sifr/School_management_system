@@ -58,7 +58,12 @@ ROOT_URLCONF = 'School_management_system.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates/'),
+            os.path.join(BASE_DIR, 'templates/include/'),
+            os.path.join(BASE_DIR, 'templates/students/'),
+            os.path.join(BASE_DIR, 'templates/teachers/'),
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -130,6 +135,10 @@ STATIC_URL = 'static/'
 # STATIC_ROOT=os.path.join(BASE_DIR, '/static/')
 STATICFILES_DIR=[
     os.path.join(BASE_DIR, 'static/'),
+    os.path.join(BASE_DIR, 'static/css'),
+    os.path.join(BASE_DIR, 'static/images'),
+    os.path.join(BASE_DIR, 'static/js'),
+    os.path.join(BASE_DIR, 'static/webfonts'),
 # For templates in apps
 ]
 
