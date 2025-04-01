@@ -79,7 +79,7 @@ class StudentProfile(models.Model):
     # حقل مرتبط بعملية ربط الطالب بالقسم (Section) الموجود بتطبيق الأكاديميات (مثلاً 'academics.Section')
     section = models.ForeignKey('academics.Section', on_delete=models.SET_NULL, null=True, blank=True)
     date_joining_sections = models.DateTimeField(null=True, blank=True)
-    add_by = models.ForeignKey(SupervisorProfile, on_delete=models.CASCADE)
+    add_by = models.ForeignKey(SupervisorProfile, default=None,on_delete=models.CASCADE)
     
     def __str__(self):
         return f"{self.user.full_name}"
@@ -95,7 +95,7 @@ class TeacherProfile(models.Model):
         on_delete=models.CASCADE,
         limit_choices_to={'user_type': CustomUser.USER_TYPE_TEACHER}
     )
-    add_by = models.ForeignKey(SupervisorProfile, on_delete=models.CASCADE)
+    add_by = models.ForeignKey(SupervisorProfile, default=None,on_delete=models.CASCADE)
     def __str__(self):
         return  self.user.full_name
 
@@ -108,7 +108,7 @@ class GuardianProfile(models.Model):
         limit_choices_to={'user_type': CustomUser.USER_TYPE_GUARDIAN}
     )
     guardian_type = models.CharField(max_length=50, null=True, blank=True)
-    add_by = models.ForeignKey(SupervisorProfile, on_delete=models.CASCADE)
+    add_by = models.ForeignKey(SupervisorProfile, default=None,on_delete=models.CASCADE)
     
     def __str__(self):
         return self.user.full_name
