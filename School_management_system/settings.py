@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'assignments.apps.AssignmentsConfig',
     'grades.apps.GradesConfig',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -61,7 +62,7 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, 'templates/'),
             os.path.join(BASE_DIR, 'templates/include/'),
-            os.path.join(BASE_DIR, 'templates/students/'),
+            os.path.join(BASE_DIR, 'templates/accounts/'),
             os.path.join(BASE_DIR, 'templates/teachers/'),
             ],
         'APP_DIRS': True,

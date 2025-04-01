@@ -29,10 +29,12 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     USER_TYPE_STUDENT = 'student'
     USER_TYPE_TEACHER = 'teacher'
     USER_TYPE_GUARDIAN = 'guardian'
+    USER_TYPE_SUPERVISOR = 'supervisor'
     USER_TYPE_CHOICES = [
         (USER_TYPE_STUDENT, 'طالب'),
         (USER_TYPE_TEACHER, 'معلم'),
         (USER_TYPE_GUARDIAN, 'ولي أمر'),
+        (USER_TYPE_SUPERVISOR, 'مشرف'),
     ]
     phone_number = models.CharField(max_length=15, unique=True)
     user_type = models.CharField(max_length=10, choices=USER_TYPE_CHOICES)
@@ -56,6 +58,18 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return self.full_name
 
+
+
+class SupervisorProfile(models.Model):
+    user=models.ForeignKey(
+        CustomUser,
+        on_delete=models.CASCADE,
+        limit_choices_to={'user_type': CustomUser.USER_TYPE_SUPERVISOR}
+    )
+    def __str__(self):
+        return f"{self.user.full_name}"
+
+
 class StudentProfile(models.Model):
     user = models.OneToOneField(
         CustomUser,
@@ -65,6 +79,7 @@ class StudentProfile(models.Model):
     # حقل مرتبط بعملية ربط الطالب بالقسم (Section) الموجود بتطبيق الأكاديميات (مثلاً 'academics.Section')
     section = models.ForeignKey('academics.Section', on_delete=models.SET_NULL, null=True, blank=True)
     date_joining_sections = models.DateTimeField(null=True, blank=True)
+    add_by = models.ForeignKey(SupervisorProfile, on_delete=models.CASCADE)
     
     def __str__(self):
         return f"{self.user.full_name}"
@@ -80,7 +95,7 @@ class TeacherProfile(models.Model):
         on_delete=models.CASCADE,
         limit_choices_to={'user_type': CustomUser.USER_TYPE_TEACHER}
     )
-    # يمكن إضافة حقول خاصة بالمعلم هنا إن لزم الأمر
+    add_by = models.ForeignKey(SupervisorProfile, on_delete=models.CASCADE)
     def __str__(self):
         return  self.user.full_name
 
@@ -93,6 +108,7 @@ class GuardianProfile(models.Model):
         limit_choices_to={'user_type': CustomUser.USER_TYPE_GUARDIAN}
     )
     guardian_type = models.CharField(max_length=50, null=True, blank=True)
+    add_by = models.ForeignKey(SupervisorProfile, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.user.full_name
