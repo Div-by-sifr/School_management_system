@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext_lazy as _
-from .models import CustomUser, StudentProfile,TeacherProfile,GuardianProfile,StudentGuardian
+from .models import CustomUser, StudentProfile,TeacherProfile,GuardianProfile,StudentGuardian,SupervisorProfile
 from django.utils.html import mark_safe
 class CustomUserAdmin(BaseUserAdmin):
     ordering = ('phone_number',)
@@ -33,3 +33,4 @@ admin.site.register(StudentProfile)
 admin.site.register(TeacherProfile)
 admin.site.register(GuardianProfile)
 admin.site.register(StudentGuardian)
+admin.site.register(SupervisorProfile)
