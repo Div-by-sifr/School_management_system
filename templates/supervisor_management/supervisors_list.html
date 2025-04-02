@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+ادارة المشرفين
+{% endblock title %}
+
+{% block breadcrumb %}
+
+<li class="breadcrumb-item px-1">
+    <a href="{% url 'accounts:home' %}" style="color: black;">الصفحة الرئيسية</a>
+</li>
+<li class="breadcrumb-item  px-0">
+    <a href="{% url 'accounts:supervisor_management' %}"  style="color: black;">    <span>&gt;</span> ادارة المشرفين
+</a>
+</li>
+<li class="breadcrumb-item  active px-0">
+    <span>&gt;</span> جدول المشرفين
+</li>
+
+    {% endblock breadcrumb %}
+
+{% block content %}
+    {% include 'messages.html' %}
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{% url 'accounts:supervisor_list' %}">جدول المشرفين</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'accounts:supervisor_add' %}">أضافة مشرف</a>
+
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+  </li>
+</ul>
+
+
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">الاسم</th>
+            <th scope="col">العمر</th>
+            <th scope="col">الجنس</th>
+            <th scope="col">رقم الهاتف</th>
+            <th scope="col">الايميل</th>
+            <th scope="col">النوع</th>
+            <th scope="col">العنوان</th>
+            <th scope="col">الصورة الشخصية</th>
+            <th scope="col">حذف/تعديل</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for supervisor in supervisors  %}
+          
+        <tr>
+            <th scope="row">{{supervisor.pk}}</th>
+            <td>{{supervisor.user.full_name}}</td>
+            <td>{{supervisor.user.age}}</td>
+            
+            {% if supervisor.user.gender == "M" %}
+                <td>ذكر</td>
+            {% elif supervisor.user.gender == "F" %}
+                <td>انثى</td>
+
+            {% endif %}
+            <td>{{supervisor.user.phone_number}}</td>
+            <td>{{supervisor.user.email}}</td>
+            
+            {% if supervisor.user.user_type == 'supervisor' %}
+                <td>مشرف</td>
+            {% endif %}
+            <td>{{supervisor.user.address}}</td>
+            <td>
+                <img src="{{supervisor.user.image.url}}" width="100px" height="100px" alt="">
+            </td>
+                
+            <td>
+                <a href="#" class="mx-2">
+                    <i class="fas fa-edit ">
+                    </i>
+                </a>
+                <a href="{% url 'accounts:supervisor_delete' supervisor.user.id %}">
+                    <i class="fas fa-trash-alt text-danger">
+                    </i>
+                </a>
+               
+               {% comment %}
+                <a href="{{ url('patients:showdetail', patient.id) }}">
+                    <i class="class-text-warning"></i>
+                    <i class="fas fa-info-alt"></i>
+                </a>
+               {% endcomment %}
+                
+            </td>
+
+           
+        </tr>
+        {% endfor %}
+       
+    </tbody>
+</table>
+{% endblock content %}
+    

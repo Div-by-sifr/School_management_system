@@ -1,0 +1,22 @@
+{% if messages %}
+    <div class="alert alert-info" id="infoMessage">
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
+
+
+<script>
+    setTimeout(function() {
+        var message = document.getElementById('infoMessage');
+        if (message) {
+            // إضافة تأثير الاختفاء التدريجي
+            message.style.transition = 'opacity 1s';
+            message.style.opacity = '0';
+            setTimeout(function() {
+                message.style.display = 'none';
+            }, 1000);  // إخفاء العنصر بعد انتهاء الانتقال
+        }
+    }, 3000);  // 5 ثوانٍ
+</script>

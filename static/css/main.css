@@ -1,7 +1,12 @@
 a {
     text-decoration: none !important;
+   
 }
 
 .custom-check-box {
     margin-top: 6px !important;
+}
+
+body {
+    direction: rtl !important;
 }

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+ادارة المشرفين
+{% endblock title %}
+
+{% block breadcrumb %}
+
+<li class="breadcrumb-item px-1">
+    <a href="{% url 'accounts:home' %}" style="color: black;">الصفحة الرئيسية</a>
+</li>
+<li class="breadcrumb-item  px-0">
+    <a href="{% url 'accounts:supervisor_management' %}"  style="color: black;">    <span>&gt;</span> ادارة المشرفين
+</a>
+</li>
+<li class="breadcrumb-item  active px-0">
+    <span>&gt;</span> أضافة مشرف
+</li>
+
+    {% endblock breadcrumb %}
+
+{% block content %}
+    
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link "  href="{% url 'accounts:supervisor_list' %}">جدول المشرفين</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{% url 'accounts:supervisor_add' %}">أضافة مشرف</a>
+
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+  </li>
+</ul>
+
+
+<div class="container">
+    <h1 class="text-center logo my-4">
+      
+    </h1>
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-sm-12 mb-4">
+            <div class="card ">
+                <div class="card-body">
+                    <h3 class="card-title">اضافة مشرف</h3>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% include 'form.html' %}
+                        <br>
+                        <button type="submit" class="btn btn-primary btn-block mt-4">اضافة</button>
+                    </form>
+                </div>
+              
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+    

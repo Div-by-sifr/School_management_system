@@ -1,39 +1,91 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
-    Boards
+    الصفحة الرئيسية | نظام ادارة المدرسة
 {% endblock title %}
+        
+{% block styles %}
+        <style media="screen">
+        .jumbotron {
+        margin-top: 0px ;
+        margin-bottom: 0px ;
+        background-image: url('{% static "images/bg2.jpg" %}');
+        background-size: cover ;
+        background-repeat: no-repeat ;
+         }
+
+        .jumbotron h1 {
+          text-align: center ;
+        }
+
+        .alert {
+          margin: 0px ;
+        }
+
+
+
+        .glow {
+          font-size: 70px ;
+          color: #ffffff ;
+          text-align: center ;
+          -webkit-animation: glow 1s ease-in-out infinite alternate ;
+          -moz-animation: glow 1s ease-in-out infinite alternate ;
+          animation: glow 1s ease-in-out infinite alternate ;
+        }
+
+        @-webkit-keyframes glow {
+          from {
+            text-shadow: 0 0 10px #eeeeee, 0 0 20px #000000, 0 0 30px #000000, 0 0 40px #000000, 0 0 50px #9554b3, 0 0 60px #9554b3, 0 0 70px #9554b3 ;
+          }
+
+          to {
+            text-shadow: 0 0 20px #eeeeee, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6 ;
+          }
+        }
+    </style>
+{% endblock styles %}
     
-    
-    {% block breadcrumb %}
-        <li class="breadcrumb-item avtive">Boards</li>
-    {% endblock breadcrumb %}
+{% block breadcrumb %}
+        <li class="breadcrumb-item avtive">الصفحة الرئيسية</li>
+{% endblock breadcrumb %}
         
 
     
 {% block content %}
-    <table class="table">
-        
-        <thead class="table-dark">
-            <tr>
-                <th>Board</th>
-                <th>Posts</th>
-                <th>Topics</th>
-                <th>Last Post</th>
-            </tr>
-        </thead>
-        
-        <tbody>
-    {% for board in boards%}
-    <tr>
-        <td><h4><a href="{% url 'boards_topics' board.name %}">{{board.name}}</a></h4>
-            <small class="text-muted" >{{board.description}}</small></td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-    </tr>
-    {% endfor %}
 
-        </tbody>
-    </table>
+{% include 'messages.html' %}
+ <br>
+  <br>
+  <div class="jumbotron" style="margin-bottom: 0px;margin-top: 0px;">
+    <br>
+    <h1 class="display-4 glow">مرحباً بك</h1>
+
+    <br><br>
+<p class="text-center text-white display-6">
+    <i class="fas fa-lightbulb"></i> المعرفة هي مفتاح النجاح.
+</p>   <br><br><br><br><br>
+    
+    {% if not user.is_authenticated %}
+        
+        
+    <p class="lead w-100 text-center">
+      <a class="btn btn-primary btn-lg" href="{% url 'accounts:login' %}" role="button">يلا بينا نبدأ الشغل! سجل دخولك هنا
+
+</a>
+    </p>
+     <br><br>
+     <br>
+    {% else %}
+     <br><br>
+    <br><br>
+    <br>
+    {% endif %}
+
+   
+
+  </div>
+
+
+  <br>
 {% endblock content %}

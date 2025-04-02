@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
-
+from datetime import date
 # مدير المستخدمين المخصص لإنشاء المستخدمين والمشرفين
 class CustomUserManager(BaseUserManager):
     def create_user(self, phone_number, user_type, password=None, **extra_fields):
@@ -42,7 +42,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     # حقول مشتركة لجميع المستخدمين
     full_name = models.CharField(max_length=255)
     birthday = models.DateField(null=True, blank=True)
-    gender = models.CharField(max_length=1, choices=[('M', 'Male'), ('F', 'Female')])
+    gender = models.CharField(max_length=1, choices=[('M', 'ذكر'), ('F', 'انثى')])
     address = models.TextField(max_length=255)
     email = models.EmailField(unique=True, null=True, blank=True)
     date_joined = models.DateTimeField(auto_now_add=True)
@@ -57,6 +57,10 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     
     def __str__(self):
         return self.full_name
+    @property
+    def age(self):
+        today=date.today()
+        return today.year - self.birthday.year - ((today.month, today.day) < (self.birthday.month, self.birthday.day))
 
 
 

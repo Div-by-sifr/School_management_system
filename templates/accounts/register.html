@@ -15,7 +15,7 @@ SignUp
         <div class="col-lg-8 col-md-10 col-sm-12 mb-4">
             <div class="card ">
                 <div class="card-body">
-                    <h3 class="card-title">Sign up</h3>
+                    <h3 class="card-title">سجل حساب</h3>
                     <form method="post" novalidate>
                         {% csrf_token %}
                         {% include 'form.html' %}
@@ -24,7 +24,7 @@ SignUp
                     </form>
                 </div>
                 <div class="card-footer text-muted text-center">
-                    Already have an account? <a href="{% url 'login' %}">Log in</a>
+                    Already have an account? <a href="{% url 'accounts:login' %}">Log in</a>
                 </div>
             </div>
         </div>

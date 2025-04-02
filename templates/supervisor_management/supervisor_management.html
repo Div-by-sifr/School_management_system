@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+ادارة المشرفين
+{% endblock title %}
+
+{% block breadcrumb %}
+
+<li class="breadcrumb-item px-1">
+    <a href="{% url 'accounts:home' %}"  style="color: black;">الصفحة الرئيسية</a>
+</li>
+<li class="breadcrumb-item  px-0">
+    <span>&gt;</span> ادارة المشرفين
+</li>
+
+    {% endblock breadcrumb %}
+
+{% block content %}
+    
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{% url 'accounts:supervisor_list' %}">جدول المشرفين</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'accounts:supervisor_add' %}">أضافة مشرف</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+ 
+</ul>
+
+
+
+
+{% endblock content %}
+    

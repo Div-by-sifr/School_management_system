@@ -64,6 +64,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'templates/include/'),
             os.path.join(BASE_DIR, 'templates/accounts/'),
             os.path.join(BASE_DIR, 'templates/teachers/'),
+            os.path.join(BASE_DIR, 'templates/supervisor_management/'),
             ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -131,15 +132,17 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
-
-STATIC_URL = 'static/'
 # STATIC_ROOT=os.path.join(BASE_DIR, '/static/')
-STATICFILES_DIR=[
+
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS=[
     os.path.join(BASE_DIR, 'static/'),
-    os.path.join(BASE_DIR, 'static/css'),
-    os.path.join(BASE_DIR, 'static/images'),
-    os.path.join(BASE_DIR, 'static/js'),
-    os.path.join(BASE_DIR, 'static/webfonts'),
+    os.path.join(BASE_DIR, 'static/css/'),
+    os.path.join(BASE_DIR, 'static/images/'),
+    os.path.join(BASE_DIR, 'static/js/'),
+    os.path.join(BASE_DIR, 'static/webfonts/'),
 # For templates in apps
 ]
 
