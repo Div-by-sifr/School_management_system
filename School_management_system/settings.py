@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'assignments.apps.AssignmentsConfig',
     'grades.apps.GradesConfig',
     'widget_tweaks',
+    'django_filters',
 ]
 
 MIDDLEWARE = [

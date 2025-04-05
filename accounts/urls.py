@@ -11,6 +11,8 @@ urlpatterns = [
     path('supervisor_management/supervisor_list/',views.supervisor_list, name='supervisor_list'),
     path('supervisor_management/supervisor_add/',views.supervisor_add, name='supervisor_add'),
     path('supervisor_management/supervisor_delete/<int:pk>/',views.supervisor_delete, name='supervisor_delete'),
+    path('supervisor_management/supervisor_edit/<int:pk>/',views.supervisor_edit, name='supervisor_edit'),
+    path('supervisor_management/supervisor_search/',views.supervisor_search, name='supervisor_search'),
 
 ]
 
