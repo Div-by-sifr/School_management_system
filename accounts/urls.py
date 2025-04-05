@@ -13,6 +13,10 @@ urlpatterns = [
     path('supervisor_management/supervisor_delete/<int:pk>/',views.supervisor_delete, name='supervisor_delete'),
     path('supervisor_management/supervisor_edit/<int:pk>/',views.supervisor_edit, name='supervisor_edit'),
     path('supervisor_management/supervisor_search/',views.supervisor_search, name='supervisor_search'),
+    path('student_management/',views.student_management, name='student_management'),
+    path('student_management/student_list/',views.student_list, name='student_list'),
+    path('student_management/student_delete/<int:pk>/',views.student_delete, name='student_delete'),
+    path('student_management/student_edit/<int:pk>/',views.student_edit, name='student_edit'),
 
 ]
 

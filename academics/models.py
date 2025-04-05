@@ -50,4 +50,13 @@ class Class(models.Model):
     joining_date=models.DateField()
     subject=models.ForeignKey(Subject, related_name='subject',on_delete=models.CASCADE)
     add_by = models.ForeignKey('accounts.SupervisorProfile',default=None ,on_delete=models.DO_NOTHING, null=True, blank=True)
-    
+
+
+
+class Students_Academic_Levels(models.Model):
+    academic_levels=models.ForeignKey(AcademicLevel, related_name='academic_levels', on_delete=models.CASCADE)
+    student = models.ForeignKey('accounts.StudentProfile',related_name='students_academic_levels' ,default=None ,on_delete=models.CASCADE)
+    registration_date=models.DateTimeField()
+
+    def __str__(self):
+        return f'{self.student.user.full_name} /{self.student.section.academic_level} {self.student.section.name} '

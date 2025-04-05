@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+ادارة المشرفين
+{% endblock title %}
+
+{% block breadcrumb %}
+
+<li class="breadcrumb-item px-1">
+    <a href="{% url 'accounts:home' %}" style="color: black;">الصفحة الرئيسية</a>
+</li>
+<li class="breadcrumb-item  px-0">
+    <a href="{% url 'accounts:supervisor_management' %}"  style="color: black;">    <span>&gt;</span> ادارة الطلاب
+</a>
+</li>
+<li class="breadcrumb-item   px-0">
+    <a href="{% url 'accounts:supervisor_list' %}"  style="color: black;">    <span>&gt;</span>  جدول الطلاب
+</a>
+</li>
+<li class="breadcrumb-item  active px-0">
+    <span>&gt;</span> تعديل طالب
+</li>
+
+    {% endblock breadcrumb %}
+
+{% block content %}
+{% include 'messages.html' %}
+    
+
+
+
+<div class="container">
+    <h1 class="text-center logo my-4">
+      
+    </h1>
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-sm-12 mb-4">
+            <div class="card ">
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+  
+  <h3> تعديل بيانات الطالب </h3>
+  {{ user_form.as_p }}
+  {% for field in user_form %}
+  {% for error in field.errors %}
+    <div class="text-danger">{{ error }}</div>
+  {% endfor %}
+{% endfor %}
+
+<h3>الشعبة الحالية</h3>
+{{ profile_form.as_p }}
+{% for field in profile_form %}
+  {% for error in field.errors %}
+    <div class="text-danger">{{ error }}</div>
+  {% endfor %}
+{% endfor %}
+
+<h3>المستوى الأكاديمي</h3>
+{{ level_formset.management_form }}
+<table class="table">
+  <thead>
+    <tr>
+      <th>اختر المستوى</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+<td>
+    {% for hidden in form.hidden_fields %}
+    {{ hidden }}
+{% endfor %}
+  {{ level_formset.as_p }}
+  {% for error in form.non_field_errors %}
+    <div class="text-danger">{{ error }}</div>
+  {% endfor %}  
+</td>
+
+      </tr>
+  </tbody>
+</table>
+
+  <button type="submit" class="btn btn-primary">حفظ التعديلات</button>
+</form>
+
+    </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+    

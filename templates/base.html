@@ -36,7 +36,7 @@
 <a class="nav-link {% if '/accounts/supervisor_management/' in request.path %}active{% endif %}"
    href="{% url 'accounts:supervisor_management' %}">
     إدارة المشرفين
-</a>            <a class="nav-link " aria-current="page" href="{% url 'accounts:home' %}">ادارة الطلاب</a>
+</a>            <a class="nav-link {% if '/accounts/student_management/' in request.path %}active{% endif %} " aria-current="page" href="{% url 'accounts:student_management' %}">ادارة الطلاب</a>
             <a class="nav-link" href="#">ادارة المعلمين</a>
             <a class="nav-link" href="#">ادارة الواجبات</a>
             <a class="nav-link" href="#">ادارة المستويات الدراسية</a>

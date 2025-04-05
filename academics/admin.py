@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import AcademicLevel,AcademicYear,Section,Term,Subject,Class
+from .models import AcademicLevel,AcademicYear,Section,Term,Subject,Class,Students_Academic_Levels
 # Register your models here.
 class AcademicLevelsAdmin(admin.ModelAdmin):
     list_display = ('id', 'level_name','level_order','academic_year')
@@ -19,6 +19,8 @@ class SectionAdmin(admin.ModelAdmin):
         return obj.academic_level.academic_year
     get_academic_year.short_description = 'عام التعليمي'
 
+
+
 admin.site.register(AcademicLevel,AcademicLevelsAdmin)
 
 admin.site.register(AcademicYear)
@@ -32,3 +34,5 @@ admin.site.register(Subject)
 
 
 admin.site.register(Class)
+admin.site.register(Students_Academic_Levels)
+

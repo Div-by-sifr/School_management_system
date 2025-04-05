@@ -1,12 +1,13 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import CustomUser
+from .models import CustomUser,StudentProfile
 from django.contrib.auth import authenticate
 from django.utils.safestring import mark_safe
-
+from academics.models import Section,Students_Academic_Levels,AcademicLevel
 import re
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django.forms import inlineformset_factory
 
 class AddSupervisorForm(UserCreationForm):
     full_name = forms.CharField(
@@ -166,3 +167,92 @@ class EditSupervisorForm(forms.ModelForm):
         if CustomUser.objects.filter(phone_number=phone_number).exclude(pk=user).exists():
             raise forms.ValidationError("رقم الجوال مستخدم من قبل")
         return phone_number
+
+
+class EditUserForm(forms.ModelForm):
+    full_name = forms.CharField(
+        label='الاسم الكامل',
+        widget=forms.TextInput(attrs={'class': 'form-control'})
+    )
+    gender=forms.ChoiceField(
+        label="الجنس",
+        choices=[('M', 'ذكر'), ('F', 'انثى')],
+        widget=forms.Select(attrs={'class': 'form-control'})
+    )
+    email = forms.EmailField(
+        label='البريد الإلكتروني',
+        widget=forms.EmailInput(attrs={'class': 'form-control'})
+    )
+    phone_number = forms.CharField(
+        label='رقم الجوال',
+        widget=forms.TextInput(attrs={'class': 'form-control'})
+    )
+  
+    address = forms.CharField(
+        label='العنوان',
+        widget=forms.TextInput(attrs={'class': 'form-control'})
+    )
+    birthday = forms.DateField(
+        label='تاريخ الميلاد',
+        widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+    )
+    image = forms.ImageField(
+        label='الصورة',
+        widget=forms.FileInput(attrs={'class': 'form-control'})
+    )
+
+    class Meta:
+        model = CustomUser
+        fields = ('full_name','gender', 'email', 'phone_number','birthday','address', 'image')
+
+    def clean_email(self):
+        email = self.cleaned_data.get("email")  
+        user=self.instance.pk
+        if CustomUser.objects.filter(email=email).exclude(pk=user).exists():
+            raise forms.ValidationError("هذا البريد الإلكتروني مستخدم من قبل")
+        return email
+
+    def clean_phone_number(self):
+        phone_number = self.cleaned_data.get("phone_number")
+        user=self.instance.pk
+        if CustomUser.objects.filter(phone_number=phone_number).exclude(pk=user).exists():
+            raise forms.ValidationError("رقم الجوال مستخدم من قبل")
+        return phone_number
+
+
+
+class StudentProfileForm(forms.ModelForm):
+    section = forms.ModelChoiceField(
+        label='الشعبة',
+        queryset=Section.objects.all(),
+        widget=forms.Select(attrs={'class':'form-control'})
+    )
+    class Meta:
+        model = StudentProfile
+        fields = ('section',)
+
+
+class StudentLevelForm(forms.ModelForm):
+    academic_levels=forms.ModelChoiceField(
+        label='المستوى الاكاديمي',
+        widget=forms.Select(attrs={'class':'form-control'}),
+        queryset=AcademicLevel.objects.all()
+    )
+    registration_date=forms.DateTimeField(
+        label='تاريخ التسجيل',
+        widget=forms.DateTimeInput(attrs={'class': 'form-control', 'type': 'datetime-local'})
+
+    )
+    class Meta:
+        model = Students_Academic_Levels
+        fields = ['academic_levels','registration_date']
+       
+
+StudentLevelFormSet = inlineformset_factory(
+    StudentProfile,
+    Students_Academic_Levels,
+    form=StudentLevelForm,  # هنا التغيير المهم
+    fields=['academic_levels','registration_date'],
+    extra=0,
+    can_delete=False  # لأنك لا تريد الحذف
+)
