@@ -20,8 +20,9 @@ def login(request):
     if request.user.is_authenticated:
         messages.info(request, 'أنت مسجل دخول بالفعل.')
         return redirect('accounts:home')  #
-
+        
     
+    messages.info(request, 'قم بستجيل الدخول اولاً')
     form = LoginForm(request.POST or None)  # إنشاء الفورم سواءً كانت الطلبية POST أو GET
     if request.method == 'POST':
         if form.is_valid():
