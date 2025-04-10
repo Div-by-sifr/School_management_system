@@ -17,6 +17,8 @@ urlpatterns = [
     path('student_management/student_list/',views.student_list, name='student_list'),
     path('student_management/student_delete/<int:pk>/',views.student_delete, name='student_delete'),
     path('student_management/student_edit/<int:pk>/',views.student_edit, name='student_edit'),
+    path('student_management/student_add/',views.student_add, name='student_add'),
+    path('student_management/student_search/',views.student_search, name='student_search'),
 
 ]
 

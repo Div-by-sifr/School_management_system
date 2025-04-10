@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% load widget_tweaks %}
 
+{% block title %}
+ادارة الطلاب
+
+{% endblock title %}
+
 
 {% block breadcrumb %}
 
@@ -8,11 +13,11 @@
     <a href="{% url 'accounts:home' %}" style="color: black;">الصفحة الرئيسية</a>
 </li>
 <li class="breadcrumb-item  px-0">
-    <a href="{% url 'accounts:supervisor_management' %}" style="color: black;"> <span>&gt;</span> ادارة المشرفين
+    <a href="{% url 'accounts:student_management' %}" style="color: black;"> <span>&gt;</span> ادارة الطلاب
     </a>
 </li>
 <li class="breadcrumb-item  active px-0">
-    <span>&gt;</span>  بحث عن مشرف
+    <span>&gt;</span>  بحث عن طالب
 </li>
 
 {% endblock breadcrumb %}
@@ -29,21 +34,21 @@
 {% block content %}
 <ul class="nav nav-tabs">
     <li class="nav-item">
-        <a class="nav-link " aria-current="page" href="{% url 'accounts:supervisor_list' %}">جدول المشرفين</a>
+        <a class="nav-link " aria-current="page" href="{% url 'accounts:student_list' %}">جدول الطلاب</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{% url 'accounts:supervisor_add' %}">أضافة مشرف</a>
+        <a class="nav-link" href="{% url 'accounts:student_add' %}">تسجيل طالب</a>
 
     </li>
     <li class="nav-item">
-        <a class="nav-link active" href="{% url 'accounts:supervisor_search' %}">البحث عن مشرف</a>
+        <a class="nav-link active" href="#">البحث عن طالب</a>
     </li>
 </ul>
 <div class="container mt-4">
     <!-- بطاقة البحث -->
     <div class="card mb-4">
         <div class="card-header">
-            <h2>بحث عن مشرف</h2>
+            <h2>بحث عن طالب</h2>
         </div>
         <div class="card-body">
             <form action="" method="GET">
@@ -76,7 +81,7 @@
                     <th scope="col">نوع المستخدم</th>
                     <th scope="col">العنوان</th>
                     <th scope="col">الصورة الشخصية</th>
-                    <th scope="col">حذف/تعديل</th>
+                    <th scope="col">حذف/تعديل/تفاصيل</th>
                 </tr>
             </thead>
             <tbody>
@@ -95,8 +100,10 @@
                     <td>{{ supervisor.phone_number }}</td>
                     <td>{{ supervisor.email }}</td>
                     <td>
-                        {% if supervisor.user_type == 'supervisor' %}
-                        مشرف
+                        {% if supervisor.user_type == 'student' %}
+                        طالب
+                        {% else %}
+                        غير معروف
                         {% endif %}
                     </td>
                     <td>{{ supervisor.address }}</td>
@@ -111,6 +118,9 @@
                         </a>
                         <a href="{% url 'accounts:supervisor_delete' supervisor.id %}">
                             <i class="fas fa-trash-alt text-danger"></i>
+                        </a>
+                        <a href="#" class="text-info mx-3">
+                            <i class="fa-solid fa-circle-info"></i>
                         </a>
                     </td>
                 </tr>

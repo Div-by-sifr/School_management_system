@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from datetime import date
+from datetime import datetime
+
 # مدير المستخدمين المخصص لإنشاء المستخدمين والمشرفين
 class CustomUserManager(BaseUserManager):
     def create_user(self, phone_number, user_type, password=None, **extra_fields):
@@ -65,7 +67,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
 
 class SupervisorProfile(models.Model):
-    user=models.ForeignKey(
+    user=models.OneToOneField(
         CustomUser,
         on_delete=models.CASCADE,
         limit_choices_to={'user_type': CustomUser.USER_TYPE_SUPERVISOR}
@@ -87,6 +89,20 @@ class StudentProfile(models.Model):
     
     def __str__(self):
         return f"{self.user.full_name}"
+    def latest_academic_record(self):
+        try:
+            # جلب السجل الذي يحتوي على is_current=True
+            current_level = self.student_level.filter(is_current=True).first()
+    
+            if current_level:
+                print(f"المستوى الأكاديمي الحالي: {current_level}")
+            else:
+                print("لا يوجد مستوى أكاديمي حالي لهذا الطالب.")
+            
+            return current_level
+        except Exception as e:
+            print(f"حدث خطأ أثناء جلب المستوى الأكاديمي الحالي: {e}")
+            return None
 
 
 

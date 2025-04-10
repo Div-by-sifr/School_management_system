@@ -17,7 +17,7 @@ class AcademicLevel(models.Model):
     add_by = models.ForeignKey('accounts.SupervisorProfile',default=None ,on_delete=models.DO_NOTHING, null=True, blank=True)
     
     def __str__(self):
-        return f'{self.level_name}'
+        return f'{self.level_name}-{self.academic_year}'
     
 class Section(models.Model):
     name=models.CharField(max_length=50)
@@ -54,9 +54,16 @@ class Class(models.Model):
 
 
 class Students_Academic_Levels(models.Model):
-    academic_levels=models.ForeignKey(AcademicLevel, related_name='academic_levels', on_delete=models.CASCADE)
-    student = models.ForeignKey('accounts.StudentProfile',related_name='students_academic_levels' ,default=None ,on_delete=models.CASCADE)
+    academic_levels=models.ForeignKey(AcademicLevel, related_name='academic_level', on_delete=models.CASCADE)
+    student = models.ForeignKey('accounts.StudentProfile',related_name='student_level' ,default=None ,on_delete=models.CASCADE)
     registration_date=models.DateTimeField()
+    is_current =models.BooleanField(default=False)
 
     def __str__(self):
-        return f'{self.student.user.full_name} /{self.student.section.academic_level} {self.student.section.name} '
+        # تحقق من وجود الطالب ووجود مستوى أكاديمي في الشعبة
+        if self.student and self.academic_levels:
+            return f'{self.student.user.full_name} / {self.academic_levels} '
+        elif self.student and self.student.section and self.academic_levels:
+            return f'{self.student.user.full_name} / {self.academic_levels} / {self.student.section}'
+        else:
+            return 'بيانات غير مكتملة'
