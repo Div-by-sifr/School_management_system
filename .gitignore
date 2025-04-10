@@ -1,0 +1,4 @@
+School_management_system/settings.py
+.gitignore
+__pycache__/
+*.pyc
