@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 19 أبريل 2025 الساعة 21:13
--- إصدار الخادم: 11.4.3-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Apr 19, 2025 at 10:23 PM
+-- Server version: 11.4.3-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `academics_academiclevel`
+-- Table structure for table `academics_academiclevel`
 --
 
 CREATE TABLE `academics_academiclevel` (
@@ -36,7 +36,7 @@ CREATE TABLE `academics_academiclevel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- إرجاع أو استيراد بيانات الجدول `academics_academiclevel`
+-- Dumping data for table `academics_academiclevel`
 --
 
 INSERT INTO `academics_academiclevel` (`id`, `level_name`, `level_order`, `academic_year_id`, `add_by_id`) VALUES
@@ -61,7 +61,7 @@ INSERT INTO `academics_academiclevel` (`id`, `level_name`, `level_order`, `acade
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `academics_academicyear`
+-- Table structure for table `academics_academicyear`
 --
 
 CREATE TABLE `academics_academicyear` (
@@ -72,7 +72,7 @@ CREATE TABLE `academics_academicyear` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- إرجاع أو استيراد بيانات الجدول `academics_academicyear`
+-- Dumping data for table `academics_academicyear`
 --
 
 INSERT INTO `academics_academicyear` (`id`, `start_year`, `end_year`, `add_by_id`) VALUES
@@ -84,7 +84,7 @@ INSERT INTO `academics_academicyear` (`id`, `start_year`, `end_year`, `add_by_id
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `academics_class`
+-- Table structure for table `academics_class`
 --
 
 CREATE TABLE `academics_class` (
@@ -100,7 +100,7 @@ CREATE TABLE `academics_class` (
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `academics_section`
+-- Table structure for table `academics_section`
 --
 
 CREATE TABLE `academics_section` (
@@ -112,7 +112,7 @@ CREATE TABLE `academics_section` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- إرجاع أو استيراد بيانات الجدول `academics_section`
+-- Dumping data for table `academics_section`
 --
 
 INSERT INTO `academics_section` (`id`, `name`, `description`, `academic_level_id`, `add_by_id`) VALUES
@@ -144,7 +144,7 @@ INSERT INTO `academics_section` (`id`, `name`, `description`, `academic_level_id
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `academics_students_academic_levels`
+-- Table structure for table `academics_students_academic_levels`
 --
 
 CREATE TABLE `academics_students_academic_levels` (
@@ -156,7 +156,7 @@ CREATE TABLE `academics_students_academic_levels` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- إرجاع أو استيراد بيانات الجدول `academics_students_academic_levels`
+-- Dumping data for table `academics_students_academic_levels`
 --
 
 INSERT INTO `academics_students_academic_levels` (`id`, `registration_date`, `academic_levels_id`, `student_id`, `is_current`) VALUES
@@ -170,7 +170,7 @@ INSERT INTO `academics_students_academic_levels` (`id`, `registration_date`, `ac
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `academics_subject`
+-- Table structure for table `academics_subject`
 --
 
 CREATE TABLE `academics_subject` (
@@ -182,7 +182,7 @@ CREATE TABLE `academics_subject` (
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `academics_term`
+-- Table structure for table `academics_term`
 --
 
 CREATE TABLE `academics_term` (
@@ -197,7 +197,7 @@ CREATE TABLE `academics_term` (
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `accounts_customuser`
+-- Table structure for table `accounts_customuser`
 --
 
 CREATE TABLE `accounts_customuser` (
@@ -219,22 +219,23 @@ CREATE TABLE `accounts_customuser` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- إرجاع أو استيراد بيانات الجدول `accounts_customuser`
+-- Dumping data for table `accounts_customuser`
 --
 
 INSERT INTO `accounts_customuser` (`id`, `password`, `last_login`, `is_superuser`, `phone_number`, `user_type`, `full_name`, `birthday`, `gender`, `address`, `is_active`, `is_staff`, `date_joined`, `email`, `image`) VALUES
-(4, 'pbkdf2_sha256$870000$er3nRqdrY0ngK9y0ZGmcZK$YHWAeXNbrujeaIsbwGHti3NuHn+3NKw8+NYTqQZL1jM=', '2025-04-18 17:08:08.809397', 1, '770489242', 'supervisor', 'صالح محمد صالح الجبري', '2004-02-11', 'M', 'شارع العدين', 1, 1, '2025-03-29 07:42:18.306036', 's96557867@gmail.com', 'images/25/04/03/lacoste_1.png'),
+(4, 'pbkdf2_sha256$1000000$uQuSSEDBepAAOakFUTW3zi$JAN5fJbMBbhXsRH1mM9R9sb4AA9gPTdwnaEPOx/lHVc=', '2025-04-19 20:06:09.760099', 1, '770489242', 'supervisor', 'صالح محمد صالح الجبري', '2004-02-11', 'M', 'شارع العدين', 1, 1, '2025-03-29 07:42:18.306036', 's96557867@gmail.com', 'images/25/04/03/lacoste_1.png'),
 (24, 'pbkdf2_sha256$870000$0CNsiZFJZ7mL8W3JBJ9KXE$T7CY3Mde1XDBw7AyqcI21ZQBkXYMsJseAEEEycpCDrI=', NULL, 1, '85486451', 'supervisor', 'محمد صالح عبدالله الجبري', '1963-02-11', 'M', 'Al-Udayn Street', 1, 1, '2025-04-03 07:13:59.869469', 'abnalyemen166@gmail.com', 'images/25/04/03/polo_2.jpg'),
 (34, 'pbkdf2_sha256$870000$KvzRTVTyjgFhoTjNo14iQH$mTd2HtTprj55ZamB0Qytqni+/aPtpL3gr8Z8e8dl51I=', NULL, 0, '0096777498986', 'student', 'علي نشوان الشاوؤش', '2004-03-11', 'M', 'شارع العدين', 1, 0, '2025-04-06 12:25:19.981037', 'alinashwan@gmail.com', 'images/25/04/07/Screenshot_2025-04-06_132129.png'),
 (35, 'pbkdf2_sha256$870000$XgP9cOoH4kCsHMTh99bslW$dmCzjrOfNo/+zNFvdec7QHUB1rWaipJ0FqMXClkJtpU=', NULL, 0, '777686999', 'student', 'حسين محمد علي الجبري', '2004-03-11', 'M', 'مستشفى الثوره', 1, 0, '2025-04-07 10:16:32.781509', 'hosean@gmail.com', 'images/25/04/07/adidas_4.jpg'),
 (36, 'pbkdf2_sha256$870000$9nPJ2TxGl4uO1XNAPtXtRY$kJdYnoklrGTr43kxThfQyT6f+NawTX5BRZ4f8tk0PvQ=', NULL, 0, '0096777682676', 'student', 'فادي محمد صالح الوجية', '2002-05-11', 'M', 'شارع العدين', 1, 0, '2025-04-07 11:25:45.412688', 'fadimohammed@gmail.com', 'images/25/04/07/Screenshot_2025-04-07_132524.png'),
 (41, 'pbkdf2_sha256$870000$WFMaRlQWBrEdlQSf5f05ah$D577tc1t8cecCm6K0JcUYaLEhde/KhMFnomI0wnVov0=', NULL, 0, '0096777171386', 'student', 'عبدالكريم محمد صالح الجبري', '1999-03-11', 'M', 'شارع الثورة', 1, 0, '2025-04-10 12:23:30.787498', 'abd1999@gmail.com', 'images/25/04/10/Screenshot_2025-04-10_142016.png'),
-(42, 'pbkdf2_sha256$870000$5GH90Jqch87NkSC0eZaHlb$d57Wl1+s+ZtUrtm16GpOgkzZDXw4akj18PkPGM4wois=', NULL, 0, '0096777758084', 'supervisor', 'عبدالرحمن عادل الشجاع', '1997-02-11', 'M', 'تعز', 1, 0, '2025-04-10 12:26:11.245181', 'Abdulrahman.Al-Shaja@gmail.com', 'images/25/04/10/2.png');
+(44, 'pbkdf2_sha256$1000000$P1k6qDkea8qRvmBJEtZYGt$vaca9N8xZ3yPwk1maCOe1Baf+c+REaQai5T8XecCB7w=', '2025-04-19 20:09:09.764582', 1, '0777534724', 'supervisor', 'احمد المهاجري', '2002-11-02', 'M', 'اب-صهبان', 1, 1, '2025-04-19 20:09:09.688304', 'almohagriahmed@gmail.com', 'images/25/04/19/Picsart_25-03-18_06-09-20-034.jpg'),
+(45, 'pbkdf2_sha256$1000000$4zM3kXtbqkOERfANTUMlJ4$VVu1wCwoxjSy3eRi+M+dEjq/X4sth9ztWN+TKlNa9AY=', NULL, 0, '74461568', 'student', 'عبد الرحمن عادل الشجاع', '1999-11-02', 'M', 'تعز', 1, 0, '2025-04-19 20:20:08.649448', 'abdu@gmai.com', 'images/25/04/19/Picsart_25-03-09_03-12-31-278.jpg');
 
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `accounts_customuser_groups`
+-- Table structure for table `accounts_customuser_groups`
 --
 
 CREATE TABLE `accounts_customuser_groups` (
@@ -246,7 +247,7 @@ CREATE TABLE `accounts_customuser_groups` (
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `accounts_customuser_user_permissions`
+-- Table structure for table `accounts_customuser_user_permissions`
 --
 
 CREATE TABLE `accounts_customuser_user_permissions` (
@@ -258,7 +259,7 @@ CREATE TABLE `accounts_customuser_user_permissions` (
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `accounts_guardianprofile`
+-- Table structure for table `accounts_guardianprofile`
 --
 
 CREATE TABLE `accounts_guardianprofile` (
@@ -271,7 +272,7 @@ CREATE TABLE `accounts_guardianprofile` (
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `accounts_studentguardian`
+-- Table structure for table `accounts_studentguardian`
 --
 
 CREATE TABLE `accounts_studentguardian` (
@@ -283,7 +284,7 @@ CREATE TABLE `accounts_studentguardian` (
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `accounts_studentprofile`
+-- Table structure for table `accounts_studentprofile`
 --
 
 CREATE TABLE `accounts_studentprofile` (
@@ -295,19 +296,20 @@ CREATE TABLE `accounts_studentprofile` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- إرجاع أو استيراد بيانات الجدول `accounts_studentprofile`
+-- Dumping data for table `accounts_studentprofile`
 --
 
 INSERT INTO `accounts_studentprofile` (`id`, `date_joining_sections`, `section_id`, `user_id`, `add_by_id`) VALUES
 (10, '2025-04-07 13:15:00.000000', 19, 34, 1),
 (11, '2025-04-07 12:16:00.000000', 24, 35, 1),
 (12, '2025-04-07 13:25:00.000000', 2, 36, 1),
-(17, NULL, NULL, 41, 11);
+(17, NULL, NULL, 41, 11),
+(18, '2025-04-19 23:20:00.000000', 1, 45, 14);
 
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `accounts_supervisorprofile`
+-- Table structure for table `accounts_supervisorprofile`
 --
 
 CREATE TABLE `accounts_supervisorprofile` (
@@ -316,18 +318,18 @@ CREATE TABLE `accounts_supervisorprofile` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- إرجاع أو استيراد بيانات الجدول `accounts_supervisorprofile`
+-- Dumping data for table `accounts_supervisorprofile`
 --
 
 INSERT INTO `accounts_supervisorprofile` (`id`, `user_id`) VALUES
 (1, 4),
 (11, 24),
-(12, 42);
+(14, 44);
 
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `accounts_teacherprofile`
+-- Table structure for table `accounts_teacherprofile`
 --
 
 CREATE TABLE `accounts_teacherprofile` (
@@ -339,7 +341,7 @@ CREATE TABLE `accounts_teacherprofile` (
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `assignments_assignment`
+-- Table structure for table `assignments_assignment`
 --
 
 CREATE TABLE `assignments_assignment` (
@@ -360,7 +362,7 @@ CREATE TABLE `assignments_assignment` (
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `assignments_studentassignment`
+-- Table structure for table `assignments_studentassignment`
 --
 
 CREATE TABLE `assignments_studentassignment` (
@@ -377,7 +379,7 @@ CREATE TABLE `assignments_studentassignment` (
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `auth_group`
+-- Table structure for table `auth_group`
 --
 
 CREATE TABLE `auth_group` (
@@ -388,7 +390,7 @@ CREATE TABLE `auth_group` (
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `auth_group_permissions`
+-- Table structure for table `auth_group_permissions`
 --
 
 CREATE TABLE `auth_group_permissions` (
@@ -400,7 +402,7 @@ CREATE TABLE `auth_group_permissions` (
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `auth_permission`
+-- Table structure for table `auth_permission`
 --
 
 CREATE TABLE `auth_permission` (
@@ -411,7 +413,7 @@ CREATE TABLE `auth_permission` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- إرجاع أو استيراد بيانات الجدول `auth_permission`
+-- Dumping data for table `auth_permission`
 --
 
 INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALUES
@@ -547,7 +549,7 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `django_admin_log`
+-- Table structure for table `django_admin_log`
 --
 
 CREATE TABLE `django_admin_log` (
@@ -562,7 +564,7 @@ CREATE TABLE `django_admin_log` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- إرجاع أو استيراد بيانات الجدول `django_admin_log`
+-- Dumping data for table `django_admin_log`
 --
 
 INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`, `action_flag`, `change_message`, `content_type_id`, `user_id`) VALUES
@@ -737,7 +739,7 @@ INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`,
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `django_content_type`
+-- Table structure for table `django_content_type`
 --
 
 CREATE TABLE `django_content_type` (
@@ -747,7 +749,7 @@ CREATE TABLE `django_content_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- إرجاع أو استيراد بيانات الجدول `django_content_type`
+-- Dumping data for table `django_content_type`
 --
 
 INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
@@ -785,7 +787,7 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `django_migrations`
+-- Table structure for table `django_migrations`
 --
 
 CREATE TABLE `django_migrations` (
@@ -796,7 +798,7 @@ CREATE TABLE `django_migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- إرجاع أو استيراد بيانات الجدول `django_migrations`
+-- Dumping data for table `django_migrations`
 --
 
 INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
@@ -843,7 +845,7 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `django_session`
+-- Table structure for table `django_session`
 --
 
 CREATE TABLE `django_session` (
@@ -853,19 +855,21 @@ CREATE TABLE `django_session` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- إرجاع أو استيراد بيانات الجدول `django_session`
+-- Dumping data for table `django_session`
 --
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
 ('cqzlun81nmvgj9gukdu7hc1vzpr2cahx', 'e30:1tzsY6:UQPP3FvO9H5ar2pmu5W51XUp85CAPEER6eVvTQi8FDs', '2025-04-16 07:30:10.341267'),
+('ds6m3gz51yj0xspn9rt1x9dpa3js2n01', 'e30:1u6EQG:rTpRUd6PDOiWneT7yS2TrKAR5139zH5qYfB5NaNqRlk', '2025-05-03 20:04:20.579173'),
 ('dvunkplva86waki7tk60wuiszwfepowt', '.eJxVjEEOwiAQRe_C2hBKgQGX7j0DYWZAqoYmpV0Z765NutDtf-_9l4hpW2vcel7ixOIsjDj9bpjokdsO-J7abZY0t3WZUO6KPGiX15nz83K4fwc19fqtdUHQOCY_OrBGIxKSIQaLThVgNaiQ_RDIO3CKFQZbgg4GgT3rDCTeH-ZON-M:1tztTp:OvmglwqAXjfWC2WAofMFYZJ0C26Y4DNQUeGC1eKR9-8', '2025-04-16 08:29:49.554958'),
 ('eq5h80awiwvx64tu54bzl7qjp6bjrouj', '.eJxVjEEOwiAQRe_C2hBKgQGX7j0DYWZAqoYmpV0Z765NutDtf-_9l4hpW2vcel7ixOIsjDj9bpjokdsO-J7abZY0t3WZUO6KPGiX15nz83K4fwc19fqtdUHQOCY_OrBGIxKSIQaLThVgNaiQ_RDIO3CKFQZbgg4GgT3rDCTeH-ZON-M:1u5pCC:wet6jeF1slGg07PeXTN81VDexqrMV3KE2q9-SFzcwkc', '2025-05-02 17:08:08.816425'),
+('knjeope7bmiiqqe08sc3rrh2nz6cksb1', '.eJxVjEEOwiAQRe_C2hChUAaX7j0DGWZGqRpISrsy3l2bdKHb_977L5VwXUpau8xpYnVSzqnD75iRHlI3wnest6ap1WWest4UvdOuL43led7dv4OCvXxriCNGIiCLLgtSGIglZBECb68sbEYZImRmYGIbAKMxwUXjPR6tJ_X-AEtROTo:1u6EUv:cwElKvanFz942WqcZHFzsnBmCrmwpd6LlJDj8-rNvrQ', '2025-05-03 20:09:09.777420'),
 ('zunbt7sty72rkir26h9kfog2b3zkzdu8', '.eJxVjEEOwiAQRe_C2hBKgQGX7j0DYWZAqoYmpV0Z765NutDtf-_9l4hpW2vcel7ixOIsjDj9bpjokdsO-J7abZY0t3WZUO6KPGiX15nz83K4fwc19fqtdUHQOCY_OrBGIxKSIQaLThVgNaiQ_RDIO3CKFQZbgg4GgT3rDCTeH-ZON-M:1tzE9s:6FaBvg1zEouA7O10_OjGCpXDr3G6erLRu-esrftzHXQ', '2025-04-14 12:22:28.204370');
 
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `grades_academiclevel`
+-- Table structure for table `grades_academiclevel`
 --
 
 CREATE TABLE `grades_academiclevel` (
@@ -879,7 +883,7 @@ CREATE TABLE `grades_academiclevel` (
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `grades_academiclevelsubject`
+-- Table structure for table `grades_academiclevelsubject`
 --
 
 CREATE TABLE `grades_academiclevelsubject` (
@@ -891,7 +895,7 @@ CREATE TABLE `grades_academiclevelsubject` (
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `grades_academicyear`
+-- Table structure for table `grades_academicyear`
 --
 
 CREATE TABLE `grades_academicyear` (
@@ -904,7 +908,7 @@ CREATE TABLE `grades_academicyear` (
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `grades_month`
+-- Table structure for table `grades_month`
 --
 
 CREATE TABLE `grades_month` (
@@ -916,7 +920,7 @@ CREATE TABLE `grades_month` (
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `grades_monthlygrade`
+-- Table structure for table `grades_monthlygrade`
 --
 
 CREATE TABLE `grades_monthlygrade` (
@@ -935,7 +939,7 @@ CREATE TABLE `grades_monthlygrade` (
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `grades_section`
+-- Table structure for table `grades_section`
 --
 
 CREATE TABLE `grades_section` (
@@ -949,7 +953,7 @@ CREATE TABLE `grades_section` (
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `grades_subject`
+-- Table structure for table `grades_subject`
 --
 
 CREATE TABLE `grades_subject` (
@@ -960,7 +964,7 @@ CREATE TABLE `grades_subject` (
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `grades_term`
+-- Table structure for table `grades_term`
 --
 
 CREATE TABLE `grades_term` (
@@ -975,7 +979,7 @@ CREATE TABLE `grades_term` (
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `grades_termgrade`
+-- Table structure for table `grades_termgrade`
 --
 
 CREATE TABLE `grades_termgrade` (
@@ -1297,7 +1301,7 @@ ALTER TABLE `academics_term`
 -- AUTO_INCREMENT for table `accounts_customuser`
 --
 ALTER TABLE `accounts_customuser`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `accounts_customuser_groups`
@@ -1327,13 +1331,13 @@ ALTER TABLE `accounts_studentguardian`
 -- AUTO_INCREMENT for table `accounts_studentprofile`
 --
 ALTER TABLE `accounts_studentprofile`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `accounts_supervisorprofile`
 --
 ALTER TABLE `accounts_supervisorprofile`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `accounts_teacherprofile`
@@ -1444,24 +1448,24 @@ ALTER TABLE `grades_termgrade`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- قيود الجداول المُلقاة.
+-- Constraints for dumped tables
 --
 
 --
--- قيود الجداول `academics_academiclevel`
+-- Constraints for table `academics_academiclevel`
 --
 ALTER TABLE `academics_academiclevel`
   ADD CONSTRAINT `academics_academicle_academic_year_id_0394d774_fk_academics` FOREIGN KEY (`academic_year_id`) REFERENCES `academics_academicyear` (`id`),
   ADD CONSTRAINT `academics_academicle_add_by_id_09611589_fk_accounts_` FOREIGN KEY (`add_by_id`) REFERENCES `accounts_supervisorprofile` (`id`);
 
 --
--- قيود الجداول `academics_academicyear`
+-- Constraints for table `academics_academicyear`
 --
 ALTER TABLE `academics_academicyear`
   ADD CONSTRAINT `academics_academicye_add_by_id_5873199d_fk_accounts_` FOREIGN KEY (`add_by_id`) REFERENCES `accounts_supervisorprofile` (`id`);
 
 --
--- قيود الجداول `academics_class`
+-- Constraints for table `academics_class`
 --
 ALTER TABLE `academics_class`
   ADD CONSTRAINT `academics_class_add_by_id_dcd5f7d0_fk_accounts_` FOREIGN KEY (`add_by_id`) REFERENCES `accounts_supervisorprofile` (`id`),
@@ -1470,62 +1474,62 @@ ALTER TABLE `academics_class`
   ADD CONSTRAINT `academics_class_teacher_id_990928e1_fk_accounts_` FOREIGN KEY (`teacher_id`) REFERENCES `accounts_teacherprofile` (`id`);
 
 --
--- قيود الجداول `academics_section`
+-- Constraints for table `academics_section`
 --
 ALTER TABLE `academics_section`
   ADD CONSTRAINT `academics_section_academic_level_id_b7e16171_fk_academics` FOREIGN KEY (`academic_level_id`) REFERENCES `academics_academiclevel` (`id`),
   ADD CONSTRAINT `academics_section_add_by_id_30a5f19a_fk_accounts_` FOREIGN KEY (`add_by_id`) REFERENCES `accounts_supervisorprofile` (`id`);
 
 --
--- قيود الجداول `academics_students_academic_levels`
+-- Constraints for table `academics_students_academic_levels`
 --
 ALTER TABLE `academics_students_academic_levels`
   ADD CONSTRAINT `academics_students_a_academic_levels_id_a1bfec1e_fk_academics` FOREIGN KEY (`academic_levels_id`) REFERENCES `academics_academiclevel` (`id`),
   ADD CONSTRAINT `academics_students_a_student_id_1f08a2bc_fk_accounts_` FOREIGN KEY (`student_id`) REFERENCES `accounts_studentprofile` (`id`);
 
 --
--- قيود الجداول `academics_subject`
+-- Constraints for table `academics_subject`
 --
 ALTER TABLE `academics_subject`
   ADD CONSTRAINT `academics_subject_add_by_id_394d4559_fk_accounts_` FOREIGN KEY (`add_by_id`) REFERENCES `accounts_supervisorprofile` (`id`);
 
 --
--- قيود الجداول `academics_term`
+-- Constraints for table `academics_term`
 --
 ALTER TABLE `academics_term`
   ADD CONSTRAINT `academics_term_academic_levels_id_6ebc9e7b_fk_academics` FOREIGN KEY (`academic_levels_id`) REFERENCES `academics_academiclevel` (`id`),
   ADD CONSTRAINT `academics_term_add_by_id_9f9a62b9_fk_accounts_` FOREIGN KEY (`add_by_id`) REFERENCES `accounts_supervisorprofile` (`id`);
 
 --
--- قيود الجداول `accounts_customuser_groups`
+-- Constraints for table `accounts_customuser_groups`
 --
 ALTER TABLE `accounts_customuser_groups`
   ADD CONSTRAINT `accounts_customuser__customuser_id_bc55088e_fk_accounts_` FOREIGN KEY (`customuser_id`) REFERENCES `accounts_customuser` (`id`),
   ADD CONSTRAINT `accounts_customuser_groups_group_id_86ba5f9e_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`);
 
 --
--- قيود الجداول `accounts_customuser_user_permissions`
+-- Constraints for table `accounts_customuser_user_permissions`
 --
 ALTER TABLE `accounts_customuser_user_permissions`
   ADD CONSTRAINT `accounts_customuser__customuser_id_0deaefae_fk_accounts_` FOREIGN KEY (`customuser_id`) REFERENCES `accounts_customuser` (`id`),
   ADD CONSTRAINT `accounts_customuser__permission_id_aea3d0e5_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`);
 
 --
--- قيود الجداول `accounts_guardianprofile`
+-- Constraints for table `accounts_guardianprofile`
 --
 ALTER TABLE `accounts_guardianprofile`
   ADD CONSTRAINT `accounts_guardianpro_add_by_id_abccd73c_fk_accounts_` FOREIGN KEY (`add_by_id`) REFERENCES `accounts_supervisorprofile` (`id`),
   ADD CONSTRAINT `accounts_guardianpro_user_id_5b77227a_fk_accounts_` FOREIGN KEY (`user_id`) REFERENCES `accounts_customuser` (`id`);
 
 --
--- قيود الجداول `accounts_studentguardian`
+-- Constraints for table `accounts_studentguardian`
 --
 ALTER TABLE `accounts_studentguardian`
   ADD CONSTRAINT `accounts_studentguar_guardian_id_53dcc458_fk_accounts_` FOREIGN KEY (`guardian_id`) REFERENCES `accounts_guardianprofile` (`id`),
   ADD CONSTRAINT `accounts_studentguar_student_id_daf1c672_fk_accounts_` FOREIGN KEY (`student_id`) REFERENCES `accounts_studentprofile` (`id`);
 
 --
--- قيود الجداول `accounts_studentprofile`
+-- Constraints for table `accounts_studentprofile`
 --
 ALTER TABLE `accounts_studentprofile`
   ADD CONSTRAINT `accounts_studentprof_add_by_id_ca8260ab_fk_accounts_` FOREIGN KEY (`add_by_id`) REFERENCES `accounts_supervisorprofile` (`id`),
@@ -1533,20 +1537,20 @@ ALTER TABLE `accounts_studentprofile`
   ADD CONSTRAINT `accounts_studentprof_user_id_04a48d2e_fk_accounts_` FOREIGN KEY (`user_id`) REFERENCES `accounts_customuser` (`id`);
 
 --
--- قيود الجداول `accounts_supervisorprofile`
+-- Constraints for table `accounts_supervisorprofile`
 --
 ALTER TABLE `accounts_supervisorprofile`
   ADD CONSTRAINT `accounts_supervisorp_user_id_40a9b879_fk_accounts_` FOREIGN KEY (`user_id`) REFERENCES `accounts_customuser` (`id`);
 
 --
--- قيود الجداول `accounts_teacherprofile`
+-- Constraints for table `accounts_teacherprofile`
 --
 ALTER TABLE `accounts_teacherprofile`
   ADD CONSTRAINT `accounts_teacherprof_add_by_id_13ef36d7_fk_accounts_` FOREIGN KEY (`add_by_id`) REFERENCES `accounts_supervisorprofile` (`id`),
   ADD CONSTRAINT `accounts_teacherprof_user_id_9582b3e8_fk_accounts_` FOREIGN KEY (`user_id`) REFERENCES `accounts_customuser` (`id`);
 
 --
--- قيود الجداول `assignments_assignment`
+-- Constraints for table `assignments_assignment`
 --
 ALTER TABLE `assignments_assignment`
   ADD CONSTRAINT `assignments_assignme_teacher_id_4c47b114_fk_accounts_` FOREIGN KEY (`teacher_id`) REFERENCES `accounts_customuser` (`id`),
@@ -1554,47 +1558,47 @@ ALTER TABLE `assignments_assignment`
   ADD CONSTRAINT `assignments_assignment_subject_id_e5f926a7_fk_grades_subject_id` FOREIGN KEY (`subject_id`) REFERENCES `grades_subject` (`id`);
 
 --
--- قيود الجداول `assignments_studentassignment`
+-- Constraints for table `assignments_studentassignment`
 --
 ALTER TABLE `assignments_studentassignment`
   ADD CONSTRAINT `assignments_studenta_assignment_id_5feb1272_fk_assignmen` FOREIGN KEY (`assignment_id`) REFERENCES `assignments_assignment` (`id`),
   ADD CONSTRAINT `assignments_studenta_student_id_b25db2e8_fk_accounts_` FOREIGN KEY (`student_id`) REFERENCES `accounts_customuser` (`id`);
 
 --
--- قيود الجداول `auth_group_permissions`
+-- Constraints for table `auth_group_permissions`
 --
 ALTER TABLE `auth_group_permissions`
   ADD CONSTRAINT `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
   ADD CONSTRAINT `auth_group_permissions_group_id_b120cbf9_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`);
 
 --
--- قيود الجداول `auth_permission`
+-- Constraints for table `auth_permission`
 --
 ALTER TABLE `auth_permission`
   ADD CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`);
 
 --
--- قيود الجداول `django_admin_log`
+-- Constraints for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
   ADD CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   ADD CONSTRAINT `django_admin_log_user_id_c564eba6_fk_accounts_customuser_id` FOREIGN KEY (`user_id`) REFERENCES `accounts_customuser` (`id`);
 
 --
--- قيود الجداول `grades_academiclevel`
+-- Constraints for table `grades_academiclevel`
 --
 ALTER TABLE `grades_academiclevel`
   ADD CONSTRAINT `grades_academiclevel_academic_year_id_02879e0f_fk_grades_ac` FOREIGN KEY (`academic_year_id`) REFERENCES `grades_academicyear` (`id`);
 
 --
--- قيود الجداول `grades_academiclevelsubject`
+-- Constraints for table `grades_academiclevelsubject`
 --
 ALTER TABLE `grades_academiclevelsubject`
   ADD CONSTRAINT `grades_academiclevel_academic_level_id_4a637847_fk_grades_ac` FOREIGN KEY (`academic_level_id`) REFERENCES `grades_academiclevel` (`id`),
   ADD CONSTRAINT `grades_academiclevel_subject_id_d3f2c97e_fk_grades_su` FOREIGN KEY (`subject_id`) REFERENCES `grades_subject` (`id`);
 
 --
--- قيود الجداول `grades_monthlygrade`
+-- Constraints for table `grades_monthlygrade`
 --
 ALTER TABLE `grades_monthlygrade`
   ADD CONSTRAINT `grades_monthlygrade_month_id_27b80604_fk_grades_month_id` FOREIGN KEY (`month_id`) REFERENCES `grades_month` (`id`),
@@ -1603,20 +1607,20 @@ ALTER TABLE `grades_monthlygrade`
   ADD CONSTRAINT `grades_monthlygrade_term_id_4c9567ff_fk_grades_term_id` FOREIGN KEY (`term_id`) REFERENCES `grades_term` (`id`);
 
 --
--- قيود الجداول `grades_section`
+-- Constraints for table `grades_section`
 --
 ALTER TABLE `grades_section`
   ADD CONSTRAINT `grades_section_academic_level_id_a8774988_fk_grades_ac` FOREIGN KEY (`academic_level_id`) REFERENCES `grades_academiclevel` (`id`),
   ADD CONSTRAINT `grades_section_teacher_id_23e46352_fk_accounts_customuser_id` FOREIGN KEY (`teacher_id`) REFERENCES `accounts_customuser` (`id`);
 
 --
--- قيود الجداول `grades_term`
+-- Constraints for table `grades_term`
 --
 ALTER TABLE `grades_term`
   ADD CONSTRAINT `grades_term_academic_level_id_98960e51_fk_grades_ac` FOREIGN KEY (`academic_level_id`) REFERENCES `grades_academiclevel` (`id`);
 
 --
--- قيود الجداول `grades_termgrade`
+-- Constraints for table `grades_termgrade`
 --
 ALTER TABLE `grades_termgrade`
   ADD CONSTRAINT `grades_termgrade_student_id_0248f653_fk_accounts_customuser_id` FOREIGN KEY (`student_id`) REFERENCES `accounts_customuser` (`id`),
