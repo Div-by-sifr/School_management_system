@@ -99,7 +99,6 @@ def supervisor_delete(request,pk):
         if supervisor.user_type==CustomUser.USER_TYPE_SUPERVISOR:
             if supervisor.image:
                 image_path=supervisor.image.path
-                print(image_path)
                 if os.path.exists(image_path):
                     if os.path.isfile(image_path):
                         os.remove(image_path)
@@ -189,7 +188,6 @@ def student_delete(request,pk):
         if student.user_type==CustomUser.USER_TYPE_STUDENT:
             if student.image:
                 image_path=student.image.path
-                print(image_path)
                 if os.path.exists(image_path):
                     if os.path.isfile(image_path):
                         os.remove(image_path)
@@ -203,15 +201,14 @@ def student_delete(request,pk):
 
 
 
-@login_required
-@is_supervisor
+
 @login_required
 @is_supervisor
 def student_edit(request, pk):
     user = get_object_or_404(CustomUser, pk=pk)
     # 1) جلب StudentProfile
     try:
-        profile = user.studentprofile
+        profile = user.StudentProfile
     except StudentProfile.DoesNotExist:
         messages.error(request, 'الملف الشخصي للطالب غير موجود')
         return redirect('accounts:student_list')
@@ -256,9 +253,17 @@ def student_edit(request, pk):
         'form': form,
     })
 
-
+@login_required
+@is_supervisor
 def student_search(request):
     students=CustomUser.objects.filter(user_type=CustomUser.USER_TYPE_STUDENT)
     myfilter = CustomUserFilter(request.GET, queryset=students)
     
     return render(request,'student_search.html', {'myfilter': myfilter})
+
+
+@login_required
+@is_supervisor
+def student_details(request,pk):
+    student=get_object_or_404(CustomUser,pk=pk)
+    return render(request,'student_detail.html',{'student':student})

@@ -63,7 +63,7 @@
         {% for student in students  %}
           
         <tr>
-            <th scope="row">{{student.user.pk}}</th>
+            <th scope="row">{{student.pk}}</th>
             <td>{{student.user.full_name}}</td>
             <td>{{student.user.age}}</td>
             
@@ -87,7 +87,7 @@
 {% endif %}
 
 {% with rec=student.latest_academic_record %}
-  {% if rec %}
+  {% if student.latest_academic_record %}
     <td>{{ rec.academic_levels }}</td>
   {% else %}
     <td>غير مسجل</td>
@@ -109,7 +109,7 @@
                     <i class="fas fa-edit ">
                     </i>
                 </a>
-                <a href="#" class="text-info mx-3">
+                <a href="{% url 'accounts:student_details' student.user.id %}" class="text-info mx-3">
                     <i class="fa-solid fa-circle-info"></i>
                 </a>
         

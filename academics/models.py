@@ -26,7 +26,7 @@ class Section(models.Model):
     add_by = models.ForeignKey('accounts.SupervisorProfile',default=None ,on_delete=models.DO_NOTHING, null=True, blank=True)
     
     def __str__(self):
-        return f'{self.academic_level.level_name}   {self.name}'
+        return f'{self.name}'
 
 class Term(models.Model):
     term_number=models.IntegerField()
@@ -67,3 +67,5 @@ class Students_Academic_Levels(models.Model):
             return f'{self.student.user.full_name} / {self.academic_levels} / {self.student.section}'
         else:
             return 'بيانات غير مكتملة'
+    class Meta:
+        ordering = ['-registration_date']

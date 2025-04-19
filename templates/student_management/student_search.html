@@ -85,43 +85,43 @@
                 </tr>
             </thead>
             <tbody>
-                {% for supervisor in myfilter.qs %}
+                {% for student in myfilter.qs %}
                 <tr>
-                    <th scope="row">{{ supervisor.pk }}</th>
-                    <td>{{ supervisor.full_name }}</td>
-                    <td>{{ supervisor.age }}</td>
+                    <th scope="row">{{ student.pk }}</th>
+                    <td>{{ student.full_name }}</td>
+                    <td>{{ student.age }}</td>
                     <td>
-                        {% if supervisor.gender == "M" %}
+                        {% if student.gender == "M" %}
                         ذكر
-                        {% elif supervisor.gender == "F" %}
+                        {% elif student.gender == "F" %}
                         انثى
                         {% endif %}
                     </td>
-                    <td>{{ supervisor.phone_number }}</td>
-                    <td>{{ supervisor.email }}</td>
+                    <td>{{ student.phone_number }}</td>
+                    <td>{{ student.email }}</td>
                     <td>
-                        {% if supervisor.user_type == 'student' %}
+                        {% if student.user_type == 'student' %}
                         طالب
                         {% else %}
                         غير معروف
                         {% endif %}
                     </td>
-                    <td>{{ supervisor.address }}</td>
+                    <td>{{ student.address }}</td>
                     <td>
-                        {% if supervisor.image %}
-                        <img src="{{ supervisor.image.url }}" width="100px" height="100px" alt="الصورة">
+                        {% if student.image %}
+                        <img src="{{ student.image.url }}" width="100px" height="100px" alt="الصورة">
                         {% endif %}
                     </td>
                     <td>
-                        <a href="{% url 'accounts:supervisor_edit' supervisor.id %}" class="mx-2">
+                        <a href="{% url 'accounts:student_edit' student.id %}" class="mx-2">
                             <i class="fas fa-edit"></i>
                         </a>
-                        <a href="{% url 'accounts:supervisor_delete' supervisor.id %}">
+                        <a href="{% url 'accounts:student_delete' student.id %}">
                             <i class="fas fa-trash-alt text-danger"></i>
                         </a>
-                        <a href="#" class="text-info mx-3">
-                            <i class="fa-solid fa-circle-info"></i>
-                        </a>
+                <a href="{% url 'accounts:student_details' student.id %}" class="text-info mx-3">
+                    <i class="fa-solid fa-circle-info"></i>
+                </a>
                     </td>
                 </tr>
                 {% empty %}

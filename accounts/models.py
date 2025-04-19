@@ -80,7 +80,8 @@ class StudentProfile(models.Model):
     user = models.OneToOneField(
         CustomUser,
         on_delete=models.CASCADE,
-        limit_choices_to={'user_type': CustomUser.USER_TYPE_STUDENT}
+        limit_choices_to={'user_type': CustomUser.USER_TYPE_STUDENT},
+        related_name='StudentProfile'
     )
     # حقل مرتبط بعملية ربط الطالب بالقسم (Section) الموجود بتطبيق الأكاديميات (مثلاً 'academics.Section')
     section = models.ForeignKey('academics.Section', on_delete=models.SET_NULL, null=True, blank=True)
@@ -95,13 +96,10 @@ class StudentProfile(models.Model):
             current_level = self.student_level.filter(is_current=True).first()
     
             if current_level:
-                print(f"المستوى الأكاديمي الحالي: {current_level}")
-            else:
-                print("لا يوجد مستوى أكاديمي حالي لهذا الطالب.")
-            
-            return current_level
+                return current_level
+
         except Exception as e:
-            print(f"حدث خطأ أثناء جلب المستوى الأكاديمي الحالي: {e}")
+            raise ValueError('حدث خطأ '+ str(e))
             return None
 
 
