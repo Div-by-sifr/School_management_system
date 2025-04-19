@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 10 أبريل 2025 الساعة 14:33
+-- Generation Time: 19 أبريل 2025 الساعة 21:13
 -- إصدار الخادم: 11.4.3-MariaDB
 -- PHP Version: 8.2.12
 
@@ -165,9 +165,7 @@ INSERT INTO `academics_students_academic_levels` (`id`, `registration_date`, `ac
 (11, '2025-04-07 12:35:59.000000', 15, 10, 0),
 (12, '2025-04-07 12:36:11.000000', 12, 10, 0),
 (13, '2025-04-07 12:36:20.000000', 14, 10, 0),
-(14, '2025-04-07 12:37:14.000000', 16, 10, 1),
-(15, '2025-04-07 12:39:02.000000', 13, 10, 0),
-(16, '2025-04-10 14:16:00.000000', 16, 15, 1);
+(14, '2025-04-07 12:37:14.000000', 16, 10, 1);
 
 -- --------------------------------------------------------
 
@@ -225,12 +223,11 @@ CREATE TABLE `accounts_customuser` (
 --
 
 INSERT INTO `accounts_customuser` (`id`, `password`, `last_login`, `is_superuser`, `phone_number`, `user_type`, `full_name`, `birthday`, `gender`, `address`, `is_active`, `is_staff`, `date_joined`, `email`, `image`) VALUES
-(4, 'pbkdf2_sha256$870000$er3nRqdrY0ngK9y0ZGmcZK$YHWAeXNbrujeaIsbwGHti3NuHn+3NKw8+NYTqQZL1jM=', '2025-04-05 08:26:36.000463', 1, '770489242', 'supervisor', 'صالح محمد صالح الجبري', '2004-02-11', 'M', 'شارع العدين', 1, 1, '2025-03-29 07:42:18.306036', 's96557867@gmail.com', 'images/25/04/03/lacoste_1.png'),
+(4, 'pbkdf2_sha256$870000$er3nRqdrY0ngK9y0ZGmcZK$YHWAeXNbrujeaIsbwGHti3NuHn+3NKw8+NYTqQZL1jM=', '2025-04-18 17:08:08.809397', 1, '770489242', 'supervisor', 'صالح محمد صالح الجبري', '2004-02-11', 'M', 'شارع العدين', 1, 1, '2025-03-29 07:42:18.306036', 's96557867@gmail.com', 'images/25/04/03/lacoste_1.png'),
 (24, 'pbkdf2_sha256$870000$0CNsiZFJZ7mL8W3JBJ9KXE$T7CY3Mde1XDBw7AyqcI21ZQBkXYMsJseAEEEycpCDrI=', NULL, 1, '85486451', 'supervisor', 'محمد صالح عبدالله الجبري', '1963-02-11', 'M', 'Al-Udayn Street', 1, 1, '2025-04-03 07:13:59.869469', 'abnalyemen166@gmail.com', 'images/25/04/03/polo_2.jpg'),
 (34, 'pbkdf2_sha256$870000$KvzRTVTyjgFhoTjNo14iQH$mTd2HtTprj55ZamB0Qytqni+/aPtpL3gr8Z8e8dl51I=', NULL, 0, '0096777498986', 'student', 'علي نشوان الشاوؤش', '2004-03-11', 'M', 'شارع العدين', 1, 0, '2025-04-06 12:25:19.981037', 'alinashwan@gmail.com', 'images/25/04/07/Screenshot_2025-04-06_132129.png'),
 (35, 'pbkdf2_sha256$870000$XgP9cOoH4kCsHMTh99bslW$dmCzjrOfNo/+zNFvdec7QHUB1rWaipJ0FqMXClkJtpU=', NULL, 0, '777686999', 'student', 'حسين محمد علي الجبري', '2004-03-11', 'M', 'مستشفى الثوره', 1, 0, '2025-04-07 10:16:32.781509', 'hosean@gmail.com', 'images/25/04/07/adidas_4.jpg'),
 (36, 'pbkdf2_sha256$870000$9nPJ2TxGl4uO1XNAPtXtRY$kJdYnoklrGTr43kxThfQyT6f+NawTX5BRZ4f8tk0PvQ=', NULL, 0, '0096777682676', 'student', 'فادي محمد صالح الوجية', '2002-05-11', 'M', 'شارع العدين', 1, 0, '2025-04-07 11:25:45.412688', 'fadimohammed@gmail.com', 'images/25/04/07/Screenshot_2025-04-07_132524.png'),
-(39, 'pbkdf2_sha256$870000$5RdxivOsX1JbUmxBXz1ryR$TFpvHoaHN8YO4o1t6+oFZQPNsAHq6KcDWme1QzdtgTw=', NULL, 0, '0096777753472', 'student', 'احمد المهاجري', '2002-03-11', 'M', 'شارع العدين', 0, 0, '2025-04-10 12:16:47.323998', 'ahmed2023@gmail.com', 'images/25/04/10/download.jpg'),
 (41, 'pbkdf2_sha256$870000$WFMaRlQWBrEdlQSf5f05ah$D577tc1t8cecCm6K0JcUYaLEhde/KhMFnomI0wnVov0=', NULL, 0, '0096777171386', 'student', 'عبدالكريم محمد صالح الجبري', '1999-03-11', 'M', 'شارع الثورة', 1, 0, '2025-04-10 12:23:30.787498', 'abd1999@gmail.com', 'images/25/04/10/Screenshot_2025-04-10_142016.png'),
 (42, 'pbkdf2_sha256$870000$5GH90Jqch87NkSC0eZaHlb$d57Wl1+s+ZtUrtm16GpOgkzZDXw4akj18PkPGM4wois=', NULL, 0, '0096777758084', 'supervisor', 'عبدالرحمن عادل الشجاع', '1997-02-11', 'M', 'تعز', 1, 0, '2025-04-10 12:26:11.245181', 'Abdulrahman.Al-Shaja@gmail.com', 'images/25/04/10/2.png');
 
@@ -305,8 +302,7 @@ INSERT INTO `accounts_studentprofile` (`id`, `date_joining_sections`, `section_i
 (10, '2025-04-07 13:15:00.000000', 19, 34, 1),
 (11, '2025-04-07 12:16:00.000000', 24, 35, 1),
 (12, '2025-04-07 13:25:00.000000', 2, 36, 1),
-(15, NULL, NULL, 39, 1),
-(17, NULL, NULL, 41, 1);
+(17, NULL, NULL, 41, 11);
 
 -- --------------------------------------------------------
 
@@ -338,6 +334,44 @@ CREATE TABLE `accounts_teacherprofile` (
   `id` bigint(20) NOT NULL,
   `user_id` bigint(20) NOT NULL,
   `add_by_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- بنية الجدول `assignments_assignment`
+--
+
+CREATE TABLE `assignments_assignment` (
+  `id` bigint(20) NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `description` longtext NOT NULL,
+  `assignment_type` varchar(20) NOT NULL,
+  `created_date` datetime(6) NOT NULL,
+  `due_date` datetime(6) NOT NULL,
+  `max_grade` decimal(5,2) NOT NULL,
+  `attachment` varchar(100) DEFAULT NULL,
+  `is_active` tinyint(1) NOT NULL,
+  `section_id` bigint(20) NOT NULL,
+  `subject_id` bigint(20) NOT NULL,
+  `teacher_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- بنية الجدول `assignments_studentassignment`
+--
+
+CREATE TABLE `assignments_studentassignment` (
+  `id` bigint(20) NOT NULL,
+  `submission_date` datetime(6) DEFAULT NULL,
+  `submission_status` varchar(20) NOT NULL,
+  `grade` decimal(5,2) DEFAULT NULL,
+  `teacher_feedback` longtext DEFAULT NULL,
+  `student_work` varchar(100) DEFAULT NULL,
+  `assignment_id` bigint(20) NOT NULL,
+  `student_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -464,7 +498,51 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (81, 'Can add students_ academic_ levels', 19, 'add_students_academic_levels'),
 (82, 'Can change students_ academic_ levels', 19, 'change_students_academic_levels'),
 (83, 'Can delete students_ academic_ levels', 19, 'delete_students_academic_levels'),
-(84, 'Can view students_ academic_ levels', 19, 'view_students_academic_levels');
+(84, 'Can view students_ academic_ levels', 19, 'view_students_academic_levels'),
+(85, 'Can add واجب', 20, 'add_assignment'),
+(86, 'Can change واجب', 20, 'change_assignment'),
+(87, 'Can delete واجب', 20, 'delete_assignment'),
+(88, 'Can view واجب', 20, 'view_assignment'),
+(89, 'Can add تسليم الطالب', 21, 'add_studentassignment'),
+(90, 'Can change تسليم الطالب', 21, 'change_studentassignment'),
+(91, 'Can delete تسليم الطالب', 21, 'delete_studentassignment'),
+(92, 'Can view تسليم الطالب', 21, 'view_studentassignment'),
+(93, 'Can add المستوى الأكاديمي', 22, 'add_academiclevel'),
+(94, 'Can change المستوى الأكاديمي', 22, 'change_academiclevel'),
+(95, 'Can delete المستوى الأكاديمي', 22, 'delete_academiclevel'),
+(96, 'Can view المستوى الأكاديمي', 22, 'view_academiclevel'),
+(97, 'Can add السنة الأكاديمية', 23, 'add_academicyear'),
+(98, 'Can change السنة الأكاديمية', 23, 'change_academicyear'),
+(99, 'Can delete السنة الأكاديمية', 23, 'delete_academicyear'),
+(100, 'Can view السنة الأكاديمية', 23, 'view_academicyear'),
+(101, 'Can add شهر', 24, 'add_month'),
+(102, 'Can change شهر', 24, 'change_month'),
+(103, 'Can delete شهر', 24, 'delete_month'),
+(104, 'Can view شهر', 24, 'view_month'),
+(105, 'Can add ربط المادة بالمستوى', 25, 'add_academiclevelsubject'),
+(106, 'Can change ربط المادة بالمستوى', 25, 'change_academiclevelsubject'),
+(107, 'Can delete ربط المادة بالمستوى', 25, 'delete_academiclevelsubject'),
+(108, 'Can view ربط المادة بالمستوى', 25, 'view_academiclevelsubject'),
+(109, 'Can add الفصل الدراسي', 26, 'add_section'),
+(110, 'Can change الفصل الدراسي', 26, 'change_section'),
+(111, 'Can delete الفصل الدراسي', 26, 'delete_section'),
+(112, 'Can view الفصل الدراسي', 26, 'view_section'),
+(113, 'Can add المادة الدراسية', 27, 'add_subject'),
+(114, 'Can change المادة الدراسية', 27, 'change_subject'),
+(115, 'Can delete المادة الدراسية', 27, 'delete_subject'),
+(116, 'Can view المادة الدراسية', 27, 'view_subject'),
+(117, 'Can add الترم الدراسي', 28, 'add_term'),
+(118, 'Can change الترم الدراسي', 28, 'change_term'),
+(119, 'Can delete الترم الدراسي', 28, 'delete_term'),
+(120, 'Can view الترم الدراسي', 28, 'view_term'),
+(121, 'Can add الدرجة الشهرية', 29, 'add_monthlygrade'),
+(122, 'Can change الدرجة الشهرية', 29, 'change_monthlygrade'),
+(123, 'Can delete الدرجة الشهرية', 29, 'delete_monthlygrade'),
+(124, 'Can view الدرجة الشهرية', 29, 'view_monthlygrade'),
+(125, 'Can add درجة الترم', 30, 'add_termgrade'),
+(126, 'Can change درجة الترم', 30, 'change_termgrade'),
+(127, 'Can delete درجة الترم', 30, 'delete_termgrade'),
+(128, 'Can view درجة الترم', 30, 'view_termgrade');
 
 -- --------------------------------------------------------
 
@@ -650,7 +728,11 @@ INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`,
 (163, '2025-04-10 12:10:46.517330', '38', 'احمد المهاجري', 3, '', 9, 4),
 (164, '2025-04-10 12:18:13.116834', '8', 'فادي محمد صالح الوجية / الصف الاول-2025/2026 ', 2, '[]', 19, 4),
 (165, '2025-04-10 12:18:27.143883', '8', 'فادي محمد صالح الوجية / الصف الاول-2025/2026 ', 2, '[{\"changed\": {\"fields\": [\"Is current\"]}}]', 19, 4),
-(166, '2025-04-10 12:21:00.631324', '40', 'عبدالكريم محمد صالح الجبري', 3, '', 9, 4);
+(166, '2025-04-10 12:21:00.631324', '40', 'عبدالكريم محمد صالح الجبري', 3, '', 9, 4),
+(167, '2025-04-10 15:15:22.322821', '4', 'صالح محمد صالح الجبري', 2, '[{\"changed\": {\"fields\": [\"User type\"]}}]', 9, 4),
+(168, '2025-04-10 15:15:58.714553', '4', 'صالح محمد صالح الجبري', 2, '[{\"changed\": {\"fields\": [\"User type\"]}}]', 9, 4),
+(169, '2025-04-19 01:29:57.413388', '15', 'علي نشوان الشاوؤش / الصف التاسع-2024/2025 ', 3, '', 19, 4),
+(170, '2025-04-19 01:38:43.111376', '17', 'عبدالكريم محمد صالح الجبري', 2, '[{\"changed\": {\"fields\": [\"Add by\"]}}]', 10, 4);
 
 -- --------------------------------------------------------
 
@@ -684,9 +766,20 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (18, 'accounts', 'supervisorprofile'),
 (12, 'accounts', 'teacherprofile'),
 (1, 'admin', 'logentry'),
+(20, 'assignments', 'assignment'),
+(21, 'assignments', 'studentassignment'),
 (3, 'auth', 'group'),
 (2, 'auth', 'permission'),
 (4, 'contenttypes', 'contenttype'),
+(22, 'grades', 'academiclevel'),
+(25, 'grades', 'academiclevelsubject'),
+(23, 'grades', 'academicyear'),
+(24, 'grades', 'month'),
+(29, 'grades', 'monthlygrade'),
+(26, 'grades', 'section'),
+(27, 'grades', 'subject'),
+(28, 'grades', 'term'),
+(30, 'grades', 'termgrade'),
 (5, 'sessions', 'session');
 
 -- --------------------------------------------------------
@@ -743,7 +836,9 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (34, 'academics', '0008_alter_students_academic_levels_student', '2025-04-05 09:46:34.482118'),
 (35, 'academics', '0009_alter_students_academic_levels_academic_levels_and_more', '2025-04-05 11:51:34.590108'),
 (36, 'accounts', '0009_alter_supervisorprofile_user', '2025-04-06 11:35:51.088083'),
-(37, 'academics', '0010_students_academic_levels_is_current_and_more', '2025-04-07 12:49:09.893715');
+(37, 'academics', '0010_students_academic_levels_is_current_and_more', '2025-04-07 12:49:09.893715'),
+(38, 'grades', '0001_initial', '2025-04-10 14:54:47.898314'),
+(39, 'assignments', '0001_initial', '2025-04-10 14:54:47.993099');
 
 -- --------------------------------------------------------
 
@@ -764,8 +859,134 @@ CREATE TABLE `django_session` (
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
 ('cqzlun81nmvgj9gukdu7hc1vzpr2cahx', 'e30:1tzsY6:UQPP3FvO9H5ar2pmu5W51XUp85CAPEER6eVvTQi8FDs', '2025-04-16 07:30:10.341267'),
 ('dvunkplva86waki7tk60wuiszwfepowt', '.eJxVjEEOwiAQRe_C2hBKgQGX7j0DYWZAqoYmpV0Z765NutDtf-_9l4hpW2vcel7ixOIsjDj9bpjokdsO-J7abZY0t3WZUO6KPGiX15nz83K4fwc19fqtdUHQOCY_OrBGIxKSIQaLThVgNaiQ_RDIO3CKFQZbgg4GgT3rDCTeH-ZON-M:1tztTp:OvmglwqAXjfWC2WAofMFYZJ0C26Y4DNQUeGC1eKR9-8', '2025-04-16 08:29:49.554958'),
-('gggmu3wc2q37pooxmey54dtpirb3n4op', '.eJxVjEEOwiAQRe_C2hBKgQGX7j0DYWZAqoYmpV0Z765NutDtf-_9l4hpW2vcel7ixOIsjDj9bpjokdsO-J7abZY0t3WZUO6KPGiX15nz83K4fwc19fqtdUHQOCY_OrBGIxKSIQaLThVgNaiQ_RDIO3CKFQZbgg4GgT3rDCTeH-ZON-M:1u0yrM:lTyk4L_g9WbJF9LlkoBb9x_65JKzIgU0QcevWgDWplI', '2025-04-19 08:26:36.004443'),
+('eq5h80awiwvx64tu54bzl7qjp6bjrouj', '.eJxVjEEOwiAQRe_C2hBKgQGX7j0DYWZAqoYmpV0Z765NutDtf-_9l4hpW2vcel7ixOIsjDj9bpjokdsO-J7abZY0t3WZUO6KPGiX15nz83K4fwc19fqtdUHQOCY_OrBGIxKSIQaLThVgNaiQ_RDIO3CKFQZbgg4GgT3rDCTeH-ZON-M:1u5pCC:wet6jeF1slGg07PeXTN81VDexqrMV3KE2q9-SFzcwkc', '2025-05-02 17:08:08.816425'),
 ('zunbt7sty72rkir26h9kfog2b3zkzdu8', '.eJxVjEEOwiAQRe_C2hBKgQGX7j0DYWZAqoYmpV0Z765NutDtf-_9l4hpW2vcel7ixOIsjDj9bpjokdsO-J7abZY0t3WZUO6KPGiX15nz83K4fwc19fqtdUHQOCY_OrBGIxKSIQaLThVgNaiQ_RDIO3CKFQZbgg4GgT3rDCTeH-ZON-M:1tzE9s:6FaBvg1zEouA7O10_OjGCpXDr3G6erLRu-esrftzHXQ', '2025-04-14 12:22:28.204370');
+
+-- --------------------------------------------------------
+
+--
+-- بنية الجدول `grades_academiclevel`
+--
+
+CREATE TABLE `grades_academiclevel` (
+  `id` bigint(20) NOT NULL,
+  `level_name` varchar(50) NOT NULL,
+  `level_order` smallint(5) UNSIGNED NOT NULL CHECK (`level_order` >= 0),
+  `is_active` tinyint(1) NOT NULL,
+  `academic_year_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- بنية الجدول `grades_academiclevelsubject`
+--
+
+CREATE TABLE `grades_academiclevelsubject` (
+  `id` bigint(20) NOT NULL,
+  `academic_level_id` bigint(20) NOT NULL,
+  `subject_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- بنية الجدول `grades_academicyear`
+--
+
+CREATE TABLE `grades_academicyear` (
+  `id` bigint(20) NOT NULL,
+  `start_year` date NOT NULL,
+  `end_year` date NOT NULL,
+  `is_active` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- بنية الجدول `grades_month`
+--
+
+CREATE TABLE `grades_month` (
+  `id` bigint(20) NOT NULL,
+  `month_name` varchar(20) NOT NULL,
+  `month_order` smallint(5) UNSIGNED NOT NULL CHECK (`month_order` >= 0)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- بنية الجدول `grades_monthlygrade`
+--
+
+CREATE TABLE `grades_monthlygrade` (
+  `id` bigint(20) NOT NULL,
+  `assignments` decimal(5,2) NOT NULL,
+  `attendance` decimal(5,2) NOT NULL,
+  `oral` decimal(5,2) NOT NULL,
+  `written` decimal(5,2) NOT NULL,
+  `start_date` date NOT NULL,
+  `month_id` bigint(20) NOT NULL,
+  `student_id` bigint(20) NOT NULL,
+  `subject_id` bigint(20) NOT NULL,
+  `term_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- بنية الجدول `grades_section`
+--
+
+CREATE TABLE `grades_section` (
+  `id` bigint(20) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `description` longtext NOT NULL,
+  `academic_level_id` bigint(20) NOT NULL,
+  `teacher_id` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- بنية الجدول `grades_subject`
+--
+
+CREATE TABLE `grades_subject` (
+  `id` bigint(20) NOT NULL,
+  `subject_name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- بنية الجدول `grades_term`
+--
+
+CREATE TABLE `grades_term` (
+  `id` bigint(20) NOT NULL,
+  `term_number` smallint(5) UNSIGNED NOT NULL CHECK (`term_number` >= 0),
+  `start_term` date NOT NULL,
+  `end_term` date NOT NULL,
+  `is_active` tinyint(1) NOT NULL,
+  `academic_level_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- بنية الجدول `grades_termgrade`
+--
+
+CREATE TABLE `grades_termgrade` (
+  `id` bigint(20) NOT NULL,
+  `score` decimal(5,2) NOT NULL,
+  `exam` decimal(5,2) NOT NULL,
+  `start_date` date NOT NULL,
+  `student_id` bigint(20) NOT NULL,
+  `subject_id` bigint(20) NOT NULL,
+  `term_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -892,6 +1113,23 @@ ALTER TABLE `accounts_teacherprofile`
   ADD KEY `accounts_teacherprof_add_by_id_13ef36d7_fk_accounts_` (`add_by_id`);
 
 --
+-- Indexes for table `assignments_assignment`
+--
+ALTER TABLE `assignments_assignment`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `assignments_assignment_section_id_7b8751d1_fk_grades_section_id` (`section_id`),
+  ADD KEY `assignments_assignment_subject_id_e5f926a7_fk_grades_subject_id` (`subject_id`),
+  ADD KEY `assignments_assignme_teacher_id_4c47b114_fk_accounts_` (`teacher_id`);
+
+--
+-- Indexes for table `assignments_studentassignment`
+--
+ALTER TABLE `assignments_studentassignment`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `assignments_studentassig_student_id_assignment_id_ffa4d9c6_uniq` (`student_id`,`assignment_id`),
+  ADD KEY `assignments_studenta_assignment_id_5feb1272_fk_assignmen` (`assignment_id`);
+
+--
 -- Indexes for table `auth_group`
 --
 ALTER TABLE `auth_group`
@@ -940,6 +1178,74 @@ ALTER TABLE `django_migrations`
 ALTER TABLE `django_session`
   ADD PRIMARY KEY (`session_key`),
   ADD KEY `django_session_expire_date_a5c62663` (`expire_date`);
+
+--
+-- Indexes for table `grades_academiclevel`
+--
+ALTER TABLE `grades_academiclevel`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `grades_academiclevel_academic_year_id_02879e0f_fk_grades_ac` (`academic_year_id`);
+
+--
+-- Indexes for table `grades_academiclevelsubject`
+--
+ALTER TABLE `grades_academiclevelsubject`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `grades_academiclevelsubj_academic_level_id_subjec_7de95f11_uniq` (`academic_level_id`,`subject_id`),
+  ADD KEY `grades_academiclevel_subject_id_d3f2c97e_fk_grades_su` (`subject_id`);
+
+--
+-- Indexes for table `grades_academicyear`
+--
+ALTER TABLE `grades_academicyear`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `grades_month`
+--
+ALTER TABLE `grades_month`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `month_order` (`month_order`);
+
+--
+-- Indexes for table `grades_monthlygrade`
+--
+ALTER TABLE `grades_monthlygrade`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `grades_monthlygrade_student_id_subject_id_te_1f9ed895_uniq` (`student_id`,`subject_id`,`term_id`,`month_id`),
+  ADD KEY `grades_monthlygrade_month_id_27b80604_fk_grades_month_id` (`month_id`),
+  ADD KEY `grades_monthlygrade_subject_id_62870554_fk_grades_subject_id` (`subject_id`),
+  ADD KEY `grades_monthlygrade_term_id_4c9567ff_fk_grades_term_id` (`term_id`);
+
+--
+-- Indexes for table `grades_section`
+--
+ALTER TABLE `grades_section`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `grades_section_academic_level_id_a8774988_fk_grades_ac` (`academic_level_id`),
+  ADD KEY `grades_section_teacher_id_23e46352_fk_accounts_customuser_id` (`teacher_id`);
+
+--
+-- Indexes for table `grades_subject`
+--
+ALTER TABLE `grades_subject`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `grades_term`
+--
+ALTER TABLE `grades_term`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `grades_term_academic_level_id_98960e51_fk_grades_ac` (`academic_level_id`);
+
+--
+-- Indexes for table `grades_termgrade`
+--
+ALTER TABLE `grades_termgrade`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `grades_termgrade_student_id_subject_id_term_id_515eb78a_uniq` (`student_id`,`subject_id`,`term_id`),
+  ADD KEY `grades_termgrade_subject_id_4bef224e_fk_grades_subject_id` (`subject_id`),
+  ADD KEY `grades_termgrade_term_id_82a05043_fk_grades_term_id` (`term_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -1036,6 +1342,18 @@ ALTER TABLE `accounts_teacherprofile`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `assignments_assignment`
+--
+ALTER TABLE `assignments_assignment`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `assignments_studentassignment`
+--
+ALTER TABLE `assignments_studentassignment`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `auth_group`
 --
 ALTER TABLE `auth_group`
@@ -1051,25 +1369,79 @@ ALTER TABLE `auth_group_permissions`
 -- AUTO_INCREMENT for table `auth_permission`
 --
 ALTER TABLE `auth_permission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
 
 --
 -- AUTO_INCREMENT for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
 
 --
 -- AUTO_INCREMENT for table `django_content_type`
 --
 ALTER TABLE `django_content_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
+--
+-- AUTO_INCREMENT for table `grades_academiclevel`
+--
+ALTER TABLE `grades_academiclevel`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `grades_academiclevelsubject`
+--
+ALTER TABLE `grades_academiclevelsubject`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `grades_academicyear`
+--
+ALTER TABLE `grades_academicyear`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `grades_month`
+--
+ALTER TABLE `grades_month`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `grades_monthlygrade`
+--
+ALTER TABLE `grades_monthlygrade`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `grades_section`
+--
+ALTER TABLE `grades_section`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `grades_subject`
+--
+ALTER TABLE `grades_subject`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `grades_term`
+--
+ALTER TABLE `grades_term`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `grades_termgrade`
+--
+ALTER TABLE `grades_termgrade`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- قيود الجداول المُلقاة.
@@ -1174,6 +1546,21 @@ ALTER TABLE `accounts_teacherprofile`
   ADD CONSTRAINT `accounts_teacherprof_user_id_9582b3e8_fk_accounts_` FOREIGN KEY (`user_id`) REFERENCES `accounts_customuser` (`id`);
 
 --
+-- قيود الجداول `assignments_assignment`
+--
+ALTER TABLE `assignments_assignment`
+  ADD CONSTRAINT `assignments_assignme_teacher_id_4c47b114_fk_accounts_` FOREIGN KEY (`teacher_id`) REFERENCES `accounts_customuser` (`id`),
+  ADD CONSTRAINT `assignments_assignment_section_id_7b8751d1_fk_grades_section_id` FOREIGN KEY (`section_id`) REFERENCES `grades_section` (`id`),
+  ADD CONSTRAINT `assignments_assignment_subject_id_e5f926a7_fk_grades_subject_id` FOREIGN KEY (`subject_id`) REFERENCES `grades_subject` (`id`);
+
+--
+-- قيود الجداول `assignments_studentassignment`
+--
+ALTER TABLE `assignments_studentassignment`
+  ADD CONSTRAINT `assignments_studenta_assignment_id_5feb1272_fk_assignmen` FOREIGN KEY (`assignment_id`) REFERENCES `assignments_assignment` (`id`),
+  ADD CONSTRAINT `assignments_studenta_student_id_b25db2e8_fk_accounts_` FOREIGN KEY (`student_id`) REFERENCES `accounts_customuser` (`id`);
+
+--
 -- قيود الجداول `auth_group_permissions`
 --
 ALTER TABLE `auth_group_permissions`
@@ -1192,6 +1579,49 @@ ALTER TABLE `auth_permission`
 ALTER TABLE `django_admin_log`
   ADD CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   ADD CONSTRAINT `django_admin_log_user_id_c564eba6_fk_accounts_customuser_id` FOREIGN KEY (`user_id`) REFERENCES `accounts_customuser` (`id`);
+
+--
+-- قيود الجداول `grades_academiclevel`
+--
+ALTER TABLE `grades_academiclevel`
+  ADD CONSTRAINT `grades_academiclevel_academic_year_id_02879e0f_fk_grades_ac` FOREIGN KEY (`academic_year_id`) REFERENCES `grades_academicyear` (`id`);
+
+--
+-- قيود الجداول `grades_academiclevelsubject`
+--
+ALTER TABLE `grades_academiclevelsubject`
+  ADD CONSTRAINT `grades_academiclevel_academic_level_id_4a637847_fk_grades_ac` FOREIGN KEY (`academic_level_id`) REFERENCES `grades_academiclevel` (`id`),
+  ADD CONSTRAINT `grades_academiclevel_subject_id_d3f2c97e_fk_grades_su` FOREIGN KEY (`subject_id`) REFERENCES `grades_subject` (`id`);
+
+--
+-- قيود الجداول `grades_monthlygrade`
+--
+ALTER TABLE `grades_monthlygrade`
+  ADD CONSTRAINT `grades_monthlygrade_month_id_27b80604_fk_grades_month_id` FOREIGN KEY (`month_id`) REFERENCES `grades_month` (`id`),
+  ADD CONSTRAINT `grades_monthlygrade_student_id_fb2aa217_fk_accounts_` FOREIGN KEY (`student_id`) REFERENCES `accounts_customuser` (`id`),
+  ADD CONSTRAINT `grades_monthlygrade_subject_id_62870554_fk_grades_subject_id` FOREIGN KEY (`subject_id`) REFERENCES `grades_subject` (`id`),
+  ADD CONSTRAINT `grades_monthlygrade_term_id_4c9567ff_fk_grades_term_id` FOREIGN KEY (`term_id`) REFERENCES `grades_term` (`id`);
+
+--
+-- قيود الجداول `grades_section`
+--
+ALTER TABLE `grades_section`
+  ADD CONSTRAINT `grades_section_academic_level_id_a8774988_fk_grades_ac` FOREIGN KEY (`academic_level_id`) REFERENCES `grades_academiclevel` (`id`),
+  ADD CONSTRAINT `grades_section_teacher_id_23e46352_fk_accounts_customuser_id` FOREIGN KEY (`teacher_id`) REFERENCES `accounts_customuser` (`id`);
+
+--
+-- قيود الجداول `grades_term`
+--
+ALTER TABLE `grades_term`
+  ADD CONSTRAINT `grades_term_academic_level_id_98960e51_fk_grades_ac` FOREIGN KEY (`academic_level_id`) REFERENCES `grades_academiclevel` (`id`);
+
+--
+-- قيود الجداول `grades_termgrade`
+--
+ALTER TABLE `grades_termgrade`
+  ADD CONSTRAINT `grades_termgrade_student_id_0248f653_fk_accounts_customuser_id` FOREIGN KEY (`student_id`) REFERENCES `accounts_customuser` (`id`),
+  ADD CONSTRAINT `grades_termgrade_subject_id_4bef224e_fk_grades_subject_id` FOREIGN KEY (`subject_id`) REFERENCES `grades_subject` (`id`),
+  ADD CONSTRAINT `grades_termgrade_term_id_82a05043_fk_grades_term_id` FOREIGN KEY (`term_id`) REFERENCES `grades_term` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
