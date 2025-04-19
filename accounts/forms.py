@@ -497,6 +497,7 @@ class EditStudentForm(UserChangeForm):
         # 3) جلب وتحديث سجل Students_Academic_Levels
         level = self.cleaned_data.get('academic_level')
         reg_date = self.cleaned_data.get('registration_date')
+        is_current=self.cleaned_data.get('is_current')
         if level:
             try:
                 sal = Students_Academic_Levels.objects.get(student=profile)
@@ -504,7 +505,12 @@ class EditStudentForm(UserChangeForm):
                 sal.registration_date = reg_date
                 sal.save()
             except Students_Academic_Levels.DoesNotExist:
-                raise forms.ValidationError("سجل المستوى الأكاديمي غير موجود للطالب.")
+                Students_Academic_Levels.objects.create(
+                    academic_levels=level,
+                    student=profile,
+                    registration_date=reg_date,
+                    is_current=is_current
+                )
             except Exception as e:
                 raise forms.ValidationError(f"خطأ أثناء حفظ سجل المستوى الأكاديمي: {e}")
 

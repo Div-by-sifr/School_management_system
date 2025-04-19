@@ -24,7 +24,6 @@ def login(request):
         return redirect('accounts:home')  #
         
     
-    messages.info(request, 'قم بستجيل الدخول اولاً')
     form = LoginForm(request.POST or None)  # إنشاء الفورم سواءً كانت الطلبية POST أو GET
     if request.method == 'POST':
         if form.is_valid():
@@ -52,7 +51,7 @@ def signup(request):
                 temp.save()
                 SupervisorProfile.objects.create(user=temp)
             auth_login(request, temp)
-            return redirect('accounts:home')
+            return redirect('home')
     return render(request, 'register.html',{'form':form})
 
 
