@@ -1,0 +1,32 @@
+{% load static %}
+
+{% block content %}
+
+   <button class="btn" data-bs-toggle="modal" data-bs-target="#confirmModal">
+                            <i class="fas fa-trash-alt text-danger">
+                            </i>
+                          </button>
+                          
+                          <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="confirmModalLabel">هل تريد الحذف</h5>
+                                  <button type="button" class="btn-close mx-2" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body text-center">
+                                  <i class="fas fa-exclamation-triangle warning-icon"></i>
+                                  <p class="mb-0">هل أنت متأكد أنك تريد حذف هذا السجل؟<br>لا يمكن التراجع عن هذا الإجراء.</p>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">الغاء</button>
+                                  <a href="{% url 'accounts:delete_level' level.pk %}" class="btn btn-danger" onclick="confirmAction()">
+                                    حذف<i class="fas fa-trash-alt me-2"></i>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      
+{% endblock content %}
+    

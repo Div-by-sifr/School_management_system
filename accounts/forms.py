@@ -373,7 +373,7 @@ class AddStudentForm(UserCreationForm):
         return user
 
 
-class EditStudentForm(UserChangeForm):
+class EditStudentForm(UserChangeForm):  
     password=None
     full_name = forms.CharField(
         label='الاسم الكامل',
@@ -425,30 +425,13 @@ class EditStudentForm(UserChangeForm):
         widget=forms.DateTimeInput(attrs={'class': 'form-control', 'type': 'datetime-local'})
     )
 
-    #-------------------Levels ---------------------------
-    
-    academic_level = forms.ModelChoiceField(
-        label='المستوى الأكاديمي',
-        queryset=AcademicLevel.objects.all(),
-        required=False,
-        widget=forms.Select(attrs={'class': 'form-control'})
-    )
-    registration_date = forms.DateTimeField(
-        label='تاريخ التسجيل بالمستوى الأكاديمي',
-        required=False,
-        widget=forms.DateTimeInput(attrs={'class': 'form-control', 'type': 'datetime-local'})
-    )
-    is_current=forms.BooleanField(
-        label='حالة المستوى',
-        required=False,
-        widget=forms.CheckboxInput(attrs={'class': 'form-control'})
-    )
+
     class Meta:
         model = CustomUser
         fields = [
             'full_name', 'gender', 'email', 'phone_number',
             'birthday', 'address', 'image',
-            'section', 'date_joining_sections','academic_level','is_current', 'registration_date'
+            'section', 'date_joining_sections',
         ]
 
 
@@ -493,25 +476,5 @@ class EditStudentForm(UserChangeForm):
             profile.save()
         except Exception as e:
             raise forms.ValidationError(f"خطأ أثناء حفظ بيانات الملف الشخصي للطالب: {e}")
-
-        # 3) جلب وتحديث سجل Students_Academic_Levels
-        level = self.cleaned_data.get('academic_level')
-        reg_date = self.cleaned_data.get('registration_date')
-        is_current=self.cleaned_data.get('is_current')
-        if level:
-            try:
-                sal = Students_Academic_Levels.objects.get(student=profile)
-                sal.academic_levels = level
-                sal.registration_date = reg_date
-                sal.save()
-            except Students_Academic_Levels.DoesNotExist:
-                Students_Academic_Levels.objects.create(
-                    academic_levels=level,
-                    student=profile,
-                    registration_date=reg_date,
-                    is_current=is_current
-                )
-            except Exception as e:
-                raise forms.ValidationError(f"خطأ أثناء حفظ سجل المستوى الأكاديمي: {e}")
 
         return user

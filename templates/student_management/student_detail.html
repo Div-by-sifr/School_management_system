@@ -20,6 +20,8 @@
 </li>
 {% endblock breadcrumb %}
 {% block content %}
+{% include 'messages.html' %}
+
 <section style="background-color: #eee;">
 
 
@@ -196,7 +198,6 @@
                     <p class="text-muted mb-0">{{student.StudentProfile.add_by}}</p>
                 </div>
             </div>
-            <hr>
           </div>
         </div>
         <h3>سجل المستويات الاكاديمي </h3>
@@ -208,6 +209,7 @@
                         <th scope="col">السنة الاكاديمي</th>
                         <th scope="col">تاريخ التسجيل</th>
                         <th scope="col">المستوى الحالي</th>
+                        <th scope="col">حذف/تعديل</th>
 
                     </tr>
                 </thead>
@@ -226,6 +228,17 @@
                             مسجل مسبقاً
                             {% endif %}
                                 
+                        </td>
+                        <td>
+                        {% include 'confirm_deletion.html' %}
+                          <!-- <a href="{% url 'accounts:delete_level' level.pk %}" class="mx-2">
+                            <i class="fas fa-edit ">
+                            </i>
+                          </a> -->
+                       
+                         
+                        
+                        
                         </td>
                     </tr>
                     

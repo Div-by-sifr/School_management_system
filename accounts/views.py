@@ -266,3 +266,20 @@ def student_search(request):
 def student_details(request,pk):
     student=get_object_or_404(CustomUser,pk=pk)
     return render(request,'student_detail.html',{'student':student})
+
+
+# -----------------------delete level form student-------------------------
+@login_required
+@is_supervisor
+def student_academic_level_delete(request,pk):
+    
+    try:
+        student_level=get_object_or_404(Students_Academic_Levels,pk=pk)
+        student_level.delete()
+        student_pk=student_level.student.user.pk
+        messages.success(request,'تم حذف سجل الطالب')
+        return redirect('accounts:student_details',pk=student_pk)
+    except Students_Academic_Levels.DoesNotExist:
+        messages.error(request,'السجل المطلوب غير موجود')
+        return redirect('accounts:student_details',pk=student_pk)
+
