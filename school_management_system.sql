@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2025 at 10:23 PM
+-- Generation Time: Apr 20, 2025 at 01:28 AM
 -- Server version: 11.4.3-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -56,7 +56,8 @@ INSERT INTO `academics_academiclevel` (`id`, `level_name`, `level_order`, `acade
 (14, 'الصف الثالث الثانوي', 12, 3, 1),
 (15, 'الصف الثاني ثانوي', 11, 2, 1),
 (16, 'الصف الثالث ثانوي', 12, 4, 1),
-(17, 'الصف التاسع', 9, 2, 1);
+(17, 'الصف التاسع', 9, 2, 1),
+(18, 'الصف الثالث ثانوي', 12, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -79,7 +80,8 @@ INSERT INTO `academics_academicyear` (`id`, `start_year`, `end_year`, `add_by_id
 (1, '2025-03-29', '2026-03-29', NULL),
 (2, '2024-03-30', '2025-03-30', NULL),
 (3, '2026-04-07', '2027-04-07', 1),
-(4, '2027-04-07', '2028-04-07', 1);
+(4, '2027-04-07', '2028-04-07', 1),
+(5, '2028-04-19', '2029-04-19', 1);
 
 -- --------------------------------------------------------
 
@@ -162,10 +164,8 @@ CREATE TABLE `academics_students_academic_levels` (
 INSERT INTO `academics_students_academic_levels` (`id`, `registration_date`, `academic_levels_id`, `student_id`, `is_current`) VALUES
 (7, '2025-04-07 12:16:00.000000', 12, 11, 1),
 (8, '2025-04-07 13:25:00.000000', 2, 12, 1),
-(11, '2025-04-07 12:35:59.000000', 15, 10, 0),
-(12, '2025-04-07 12:36:11.000000', 12, 10, 0),
-(13, '2025-04-07 12:36:20.000000', 14, 10, 0),
-(14, '2025-04-07 12:37:14.000000', 16, 10, 1);
+(12, '2025-04-07 12:36:11.000000', 12, 10, 1),
+(17, '2025-04-20 00:03:00.000000', 16, 18, 1);
 
 -- --------------------------------------------------------
 
@@ -223,7 +223,7 @@ CREATE TABLE `accounts_customuser` (
 --
 
 INSERT INTO `accounts_customuser` (`id`, `password`, `last_login`, `is_superuser`, `phone_number`, `user_type`, `full_name`, `birthday`, `gender`, `address`, `is_active`, `is_staff`, `date_joined`, `email`, `image`) VALUES
-(4, 'pbkdf2_sha256$1000000$uQuSSEDBepAAOakFUTW3zi$JAN5fJbMBbhXsRH1mM9R9sb4AA9gPTdwnaEPOx/lHVc=', '2025-04-19 20:06:09.760099', 1, '770489242', 'supervisor', 'صالح محمد صالح الجبري', '2004-02-11', 'M', 'شارع العدين', 1, 1, '2025-03-29 07:42:18.306036', 's96557867@gmail.com', 'images/25/04/03/lacoste_1.png'),
+(4, 'pbkdf2_sha256$870000$KZrWJLRIXK0D6I3fkfbYpA$dL3JRdizdTdyGu9snG+Y7DElQcTzQQAq291p6ltl0cA=', '2025-04-19 20:58:30.776340', 1, '770489242', 'supervisor', 'صالح محمد صالح الجبري', '2004-02-11', 'M', 'شارع العدين', 1, 1, '2025-03-29 07:42:18.306036', 's96557867@gmail.com', 'images/25/04/03/lacoste_1.png'),
 (24, 'pbkdf2_sha256$870000$0CNsiZFJZ7mL8W3JBJ9KXE$T7CY3Mde1XDBw7AyqcI21ZQBkXYMsJseAEEEycpCDrI=', NULL, 1, '85486451', 'supervisor', 'محمد صالح عبدالله الجبري', '1963-02-11', 'M', 'Al-Udayn Street', 1, 1, '2025-04-03 07:13:59.869469', 'abnalyemen166@gmail.com', 'images/25/04/03/polo_2.jpg'),
 (34, 'pbkdf2_sha256$870000$KvzRTVTyjgFhoTjNo14iQH$mTd2HtTprj55ZamB0Qytqni+/aPtpL3gr8Z8e8dl51I=', NULL, 0, '0096777498986', 'student', 'علي نشوان الشاوؤش', '2004-03-11', 'M', 'شارع العدين', 1, 0, '2025-04-06 12:25:19.981037', 'alinashwan@gmail.com', 'images/25/04/07/Screenshot_2025-04-06_132129.png'),
 (35, 'pbkdf2_sha256$870000$XgP9cOoH4kCsHMTh99bslW$dmCzjrOfNo/+zNFvdec7QHUB1rWaipJ0FqMXClkJtpU=', NULL, 0, '777686999', 'student', 'حسين محمد علي الجبري', '2004-03-11', 'M', 'مستشفى الثوره', 1, 0, '2025-04-07 10:16:32.781509', 'hosean@gmail.com', 'images/25/04/07/adidas_4.jpg'),
@@ -303,8 +303,8 @@ INSERT INTO `accounts_studentprofile` (`id`, `date_joining_sections`, `section_i
 (10, '2025-04-07 13:15:00.000000', 19, 34, 1),
 (11, '2025-04-07 12:16:00.000000', 24, 35, 1),
 (12, '2025-04-07 13:25:00.000000', 2, 36, 1),
-(17, NULL, NULL, 41, 11),
-(18, '2025-04-19 23:20:00.000000', 1, 45, 14);
+(17, NULL, NULL, 41, 1),
+(18, '2025-04-19 23:20:00.000000', 1, 45, 1);
 
 -- --------------------------------------------------------
 
@@ -734,7 +734,20 @@ INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`,
 (167, '2025-04-10 15:15:22.322821', '4', 'صالح محمد صالح الجبري', 2, '[{\"changed\": {\"fields\": [\"User type\"]}}]', 9, 4),
 (168, '2025-04-10 15:15:58.714553', '4', 'صالح محمد صالح الجبري', 2, '[{\"changed\": {\"fields\": [\"User type\"]}}]', 9, 4),
 (169, '2025-04-19 01:29:57.413388', '15', 'علي نشوان الشاوؤش / الصف التاسع-2024/2025 ', 3, '', 19, 4),
-(170, '2025-04-19 01:38:43.111376', '17', 'عبدالكريم محمد صالح الجبري', 2, '[{\"changed\": {\"fields\": [\"Add by\"]}}]', 10, 4);
+(170, '2025-04-19 01:38:43.111376', '17', 'عبدالكريم محمد صالح الجبري', 2, '[{\"changed\": {\"fields\": [\"Add by\"]}}]', 10, 4),
+(171, '2025-04-19 22:32:33.923866', '18', 'علي نشوان الشاوؤش / الصف الثالث ثانوي-2027/2028 ', 1, '[{\"added\": {}}]', 19, 4),
+(172, '2025-04-19 22:34:09.640944', '19', 'علي نشوان الشاوؤش / الصف الثالث ثانوي-2027/2028 ', 1, '[{\"added\": {}}]', 19, 4),
+(173, '2025-04-19 22:35:45.530114', '5', '2028/2029', 1, '[{\"added\": {}}]', 6, 4),
+(174, '2025-04-19 22:36:04.724300', '18', 'الصف الثالث ثانوي-2028/2029', 1, '[{\"added\": {}}]', 7, 4),
+(175, '2025-04-19 22:36:46.679660', '20', 'علي نشوان الشاوؤش / الصف الثالث ثانوي-2028/2029 ', 1, '[{\"added\": {}}]', 19, 4),
+(176, '2025-04-19 22:37:04.393618', '20', 'علي نشوان الشاوؤش / الصف الثالث ثانوي-2028/2029 ', 2, '[{\"changed\": {\"fields\": [\"Is current\"]}}]', 19, 4),
+(177, '2025-04-19 22:37:07.469787', '20', 'علي نشوان الشاوؤش / الصف الثالث ثانوي-2028/2029 ', 2, '[]', 19, 4),
+(178, '2025-04-19 22:37:11.465725', '13', 'علي نشوان الشاوؤش / الصف الثالث الثانوي-2026/2027 ', 2, '[{\"changed\": {\"fields\": [\"Is current\"]}}]', 19, 4),
+(179, '2025-04-19 22:37:29.682288', '12', 'علي نشوان الشاوؤش / الصف الثالث ثانوي-2025/2026 ', 2, '[]', 19, 4),
+(180, '2025-04-19 22:37:33.586852', '13', 'علي نشوان الشاوؤش / الصف الثالث الثانوي-2026/2027 ', 2, '[{\"changed\": {\"fields\": [\"Is current\"]}}]', 19, 4),
+(181, '2025-04-19 22:37:36.801238', '20', 'علي نشوان الشاوؤش / الصف الثالث ثانوي-2028/2029 ', 2, '[{\"changed\": {\"fields\": [\"Is current\"]}}]', 19, 4),
+(182, '2025-04-19 22:39:07.634944', '21', 'علي نشوان الشاوؤش / الصف الثالث ثانوي-2028/2029 ', 1, '[{\"added\": {}}]', 19, 4),
+(183, '2025-04-19 23:24:43.731415', '12', 'علي نشوان الشاوؤش / الصف الثالث ثانوي-2025/2026 ', 2, '[{\"changed\": {\"fields\": [\"Is current\"]}}]', 19, 4);
 
 -- --------------------------------------------------------
 
@@ -862,7 +875,7 @@ INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALU
 ('cqzlun81nmvgj9gukdu7hc1vzpr2cahx', 'e30:1tzsY6:UQPP3FvO9H5ar2pmu5W51XUp85CAPEER6eVvTQi8FDs', '2025-04-16 07:30:10.341267'),
 ('ds6m3gz51yj0xspn9rt1x9dpa3js2n01', 'e30:1u6EQG:rTpRUd6PDOiWneT7yS2TrKAR5139zH5qYfB5NaNqRlk', '2025-05-03 20:04:20.579173'),
 ('dvunkplva86waki7tk60wuiszwfepowt', '.eJxVjEEOwiAQRe_C2hBKgQGX7j0DYWZAqoYmpV0Z765NutDtf-_9l4hpW2vcel7ixOIsjDj9bpjokdsO-J7abZY0t3WZUO6KPGiX15nz83K4fwc19fqtdUHQOCY_OrBGIxKSIQaLThVgNaiQ_RDIO3CKFQZbgg4GgT3rDCTeH-ZON-M:1tztTp:OvmglwqAXjfWC2WAofMFYZJ0C26Y4DNQUeGC1eKR9-8', '2025-04-16 08:29:49.554958'),
-('eq5h80awiwvx64tu54bzl7qjp6bjrouj', '.eJxVjEEOwiAQRe_C2hBKgQGX7j0DYWZAqoYmpV0Z765NutDtf-_9l4hpW2vcel7ixOIsjDj9bpjokdsO-J7abZY0t3WZUO6KPGiX15nz83K4fwc19fqtdUHQOCY_OrBGIxKSIQaLThVgNaiQ_RDIO3CKFQZbgg4GgT3rDCTeH-ZON-M:1u5pCC:wet6jeF1slGg07PeXTN81VDexqrMV3KE2q9-SFzcwkc', '2025-05-02 17:08:08.816425'),
+('go35zvjerzo9yljb2oxf70o4dcxri475', '.eJxVjEEOwiAQRe_C2hAYpjC4dO8ZCAxUqoYmpV0Z765NutDtf-_9lwhxW2vYelnClMVZoDj9binyo7Qd5Htst1ny3NZlSnJX5EG7vM65PC-H-3dQY6_fmtiwTs4T-pFRYdLgrGU_sFEu5wgeEhiVyCAQoQa06Kg4O7qBwGbx_gC-nzZs:1u6FGg:3SInTCrUPRxZejq3xLpuchmqb9-xGAZSltIdDR5TWks', '2025-05-03 20:58:30.780324'),
 ('knjeope7bmiiqqe08sc3rrh2nz6cksb1', '.eJxVjEEOwiAQRe_C2hChUAaX7j0DGWZGqRpISrsy3l2bdKHb_977L5VwXUpau8xpYnVSzqnD75iRHlI3wnest6ap1WWest4UvdOuL43led7dv4OCvXxriCNGIiCLLgtSGIglZBECb68sbEYZImRmYGIbAKMxwUXjPR6tJ_X-AEtROTo:1u6EUv:cwElKvanFz942WqcZHFzsnBmCrmwpd6LlJDj8-rNvrQ', '2025-05-03 20:09:09.777420'),
 ('zunbt7sty72rkir26h9kfog2b3zkzdu8', '.eJxVjEEOwiAQRe_C2hBKgQGX7j0DYWZAqoYmpV0Z765NutDtf-_9l4hpW2vcel7ixOIsjDj9bpjokdsO-J7abZY0t3WZUO6KPGiX15nz83K4fwc19fqtdUHQOCY_OrBGIxKSIQaLThVgNaiQ_RDIO3CKFQZbgg4GgT3rDCTeH-ZON-M:1tzE9s:6FaBvg1zEouA7O10_OjGCpXDr3G6erLRu-esrftzHXQ', '2025-04-14 12:22:28.204370');
 
@@ -1259,13 +1272,13 @@ ALTER TABLE `grades_termgrade`
 -- AUTO_INCREMENT for table `academics_academiclevel`
 --
 ALTER TABLE `academics_academiclevel`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `academics_academicyear`
 --
 ALTER TABLE `academics_academicyear`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `academics_class`
@@ -1283,7 +1296,7 @@ ALTER TABLE `academics_section`
 -- AUTO_INCREMENT for table `academics_students_academic_levels`
 --
 ALTER TABLE `academics_students_academic_levels`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `academics_subject`
@@ -1379,7 +1392,7 @@ ALTER TABLE `auth_permission`
 -- AUTO_INCREMENT for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=184;
 
 --
 -- AUTO_INCREMENT for table `django_content_type`
