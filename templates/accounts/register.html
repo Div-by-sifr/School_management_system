@@ -22,11 +22,11 @@ SignUp
                         {% csrf_token %}
                         {% include 'form.html' %}
                         <br>
-                        <button type="submit" class="btn btn-primary btn-block mt-4">Create an account</button>
+                        <button type="submit" class="btn btn-primary btn-block mt-4">انشاء الحساب</button>
                     </form>
                 </div>
                 <div class="card-footer text-muted text-center">
-                    Already have an account? <a href="{% url 'accounts:login' %}">Log in</a>
+                    هل لديك حساب بالفعل ؟ <a href="{% url 'accounts:login' %}">سجل دخول</a>
                 </div>
             </div>
         </div>

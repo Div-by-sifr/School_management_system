@@ -59,8 +59,8 @@
             </ul>
             <a class="nav-link active" aria-current="page" href="{% url 'accounts:home' %}">{{ user.full_name }}</a>
             {% else %}
-            <a class="btn btn-outline-secondary  "  href="{% url 'accounts:login' %}">Login</a>
-            <a class="btn btn-outline-secondary me-3" href="{% url 'accounts:signup' %}">SignUp</a>
+            <a class="btn btn-outline-secondary  "  href="{% url 'accounts:login' %}">تسجيل الدخول</a>
+            <a class="btn btn-outline-secondary me-3" href="{% url 'accounts:signup' %}">انشاء حساب</a>
             {% endif %}
         </div>
     </div>
