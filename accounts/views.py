@@ -52,7 +52,7 @@ def signup(request):
                 temp.save()
                 SupervisorProfile.objects.create(user=temp)
             auth_login(request, temp)
-            return redirect('home')
+            return redirect('accounts:home')
     return render(request, 'register.html',{'form':form})
 
 
