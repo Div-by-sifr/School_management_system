@@ -1,11 +1,9 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser,StudentProfile,SupervisorProfile
 from django.contrib.auth import authenticate
 from django.utils.safestring import mark_safe
 from academics.models import Section,Students_Academic_Levels,AcademicLevel
 import re
-from django import forms
 from django.contrib.auth.forms import UserCreationForm,UserChangeForm
 from django.forms.widgets import HiddenInput
 
@@ -478,3 +476,28 @@ class EditStudentForm(UserChangeForm):
             raise forms.ValidationError(f"خطأ أثناء حفظ بيانات الملف الشخصي للطالب: {e}")
 
         return user
+
+
+class EditAcademicStudentLevel(forms.ModelForm):
+    
+    
+    academic_levels= forms.ModelChoiceField(
+        label='المستوى الأكاديمي',
+        queryset=AcademicLevel.objects.all().order_by('level_order'),
+        required=False,
+        widget=forms.Select(attrs={'class': 'form-control'})
+    )
+    registration_date = forms.DateTimeField(
+        label='تاريخ التسجيل بالمستوى الأكاديمي',
+        required=False,
+        widget=forms.DateTimeInput(attrs={'class': 'form-control', 'type': 'datetime-local'})
+    )
+    is_current = forms.BooleanField(
+        label='هل الطالب مسجل حالياً في هذه المستوى',
+        required=False,
+        widget=forms.CheckboxInput(attrs={'class': 'form-check-input'})
+    )
+    class Meta():
+        model=Students_Academic_Levels
+        fields=['academic_levels','registration_date','is_current']
+        exclude=['student']

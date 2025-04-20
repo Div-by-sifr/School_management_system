@@ -21,6 +21,7 @@ urlpatterns = [
     path('student_management/student_search/',views.student_search, name='student_search'),
     path('student_management/student_details/<int:pk>/',views.student_details, name='student_details'),
     path('student_management/student_details/delete_level/<int:pk>/',views.student_academic_level_delete, name='delete_level'),
+    path('student_management/student_details/edit_level/<int:pk>/',views.student_edit_academic__level, name='edit_level'),
 ]
 
 

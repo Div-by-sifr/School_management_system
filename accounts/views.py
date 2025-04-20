@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
-from .forms import AddSupervisorForm,LoginForm,EditSupervisorForm,AddStudentForm,EditStudentForm
-from .models import GuardianProfile, StudentProfile,TeacherProfile,CustomUser,SupervisorProfile
+from .forms import AddSupervisorForm,LoginForm,EditSupervisorForm,AddStudentForm,EditStudentForm,EditAcademicStudentLevel
+from .models import  StudentProfile,CustomUser,SupervisorProfile
 from academics.models import Students_Academic_Levels
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -213,14 +213,11 @@ def student_edit(request, pk):
         return redirect('accounts:student_list')
 
     # 2) جلب سجل المستوى الأكاديمي إن وجد
-    sal = Students_Academic_Levels.objects.filter(student=profile).first()
 
     # 3) تحضير dict للـ initial
     initial = {
         'section': profile.section,
         'date_joining_sections': profile.date_joining_sections,
-        'academic_level': sal.academic_levels if sal else None,
-        'registration_date': sal.registration_date if sal else None,
     }
 
     # 4) إنشاء الفورم مع instance و initial
@@ -283,3 +280,27 @@ def student_academic_level_delete(request,pk):
         messages.error(request,'السجل المطلوب غير موجود')
         return redirect('accounts:student_details',pk=student_pk)
 
+@login_required
+@is_supervisor
+def student_edit_academic__level(request,pk):
+    try:
+        student_level=get_object_or_404(Students_Academic_Levels,pk=pk)
+        student=student_level.student
+    except Students_Academic_Levels.DoesNotExist:
+        messages.error(request,f'سجل المستوى الاكاديمي لهذه الطالب {student} غير موجود')
+        return redirect('accounts:student_details',pk=student.user.pk)
+    form=EditAcademicStudentLevel(
+        request.POST or None,
+        instance=student_level
+    )
+    try:
+        if request.method == 'POST':
+            if form.is_valid():
+                form.save()
+                messages.success(request,'تم تعديل مستوى الطالب')
+                return redirect('accounts:student_details',pk=student.user.pk)
+            else:
+                messages.error(request, 'تأكد من صحة البيانات المدخلة')
+    except Exception as e:
+                form.add_error(None, f'حدث خطأ أثناء تعديل البيانات: {e}')
+    return render(request,'student_edit_level.html',{'form': form})
