@@ -263,8 +263,13 @@ def student_search(request):
 @login_required
 @is_supervisor
 def student_details(request,pk):
-    student=get_object_or_404(CustomUser,pk=pk)
-    return render(request,'student_detail.html',{'student':student})
+    try:
+        student=CustomUser.objects.get(pk=pk)
+    except CustomUser.DoesNotExist:
+        messages.error(request,f"الطالب برقم المعرف {pk} غير موجود")
+        return redirect('accounts:student_list')
+    return render(request,'student_detail.html',{'user':student})
+
 
 
 # -----------------------delete level form student-------------------------
@@ -282,15 +287,17 @@ def student_academic_level_delete(request,pk):
         messages.error(request,'السجل المطلوب غير موجود')
         return redirect('accounts:student_details',pk=student_pk)
 
+# -----------------------edit level form student-------------------------
+
 @login_required
 @is_supervisor
-def student_edit_academic__level(request,pk):
+def student_edit_academic__level(request,pk,level):
     try:
-        student_level=get_object_or_404(Students_Academic_Levels,pk=pk)
-        student=student_level.student
+        student=CustomUser.objects.get(pk=pk)
+        student_level=Students_Academic_Levels.objects.get(pk=level)
     except Students_Academic_Levels.DoesNotExist:
-        messages.error(request,f'سجل المستوى الاكاديمي لهذه الطالب {student} غير موجود')
-        return redirect('accounts:student_details',pk=student.user.pk)
+        messages.error(request, f'سجل المستوى الأكاديمي لهذا الطالب {student.full_name} غير موجود')
+        return redirect('accounts:student_details',pk=pk)
     form=EditAcademicStudentLevel(
         request.POST or None,
         instance=student_level
@@ -300,9 +307,21 @@ def student_edit_academic__level(request,pk):
             if form.is_valid():
                 form.save()
                 messages.success(request,'تم تعديل مستوى الطالب')
-                return redirect('accounts:student_details',pk=student.user.pk)
+                return redirect('accounts:student_details',pk=pk)
             else:
                 messages.error(request, 'تأكد من صحة البيانات المدخلة')
     except Exception as e:
                 form.add_error(None, f'حدث خطأ أثناء تعديل البيانات: {e}')
-    return render(request,'student_edit_level.html',{'form': form})
+    return render(request,'student_edit_level.html',{'form': form,'student':student})
+
+
+# -----------------------add level form student-------------------------
+
+@login_required
+@is_supervisor
+def student_add_academic_level(request,pk):
+    try:
+        student=CustomUser.objects.get(pk=pk)
+    except CustomUser.DoesNotExist:
+        messages.error(request,'الطالب غير موجود')
+        return redirect('accounts:student_detail',pk=pk)

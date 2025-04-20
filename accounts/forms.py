@@ -495,4 +495,24 @@ class EditAcademicStudentLevel(forms.ModelForm):
         exclude=['student']
 
 class AddAcademicStudentLevel(forms.ModelForm):
-    pass
+    
+    academic_levels=forms.ModelChoiceField(
+        label='المستوى الأكاديمي',
+        queryset=AcademicLevel.objects.all().order_by('level_order'),
+        required=True,
+        widget=forms.Select(attrs={'class':'form-control'})
+    )
+    registration_date=forms.DateTimeField(
+        label='تاريخ التسجيل بالمستوى الأكاديمي',
+        required=True,
+        widget=forms.DateTimeInput(attrs={'class':'form-control', 'type': 'datetime-local'}),
+        ),
+    is_current=forms.BooleanField(
+        label='هل الطالب مسجل حالياً في هذه المستوى',
+        required=False,
+        widget=forms.CheckboxInput(attrs={'class':'form-check-input'})
+    )
+    class Meta():
+        model=Students_Academic_Levels
+        fields=['academic_levels','registration_date','is_current']
+        exclude=['student']
