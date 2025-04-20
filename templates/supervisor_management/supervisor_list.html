@@ -50,6 +50,7 @@
             <th scope="col">رقم الهاتف</th>
             <th scope="col">البريد الالكتروني</th>
             <th scope="col">نوع المستخدم</th>
+            <th scope="col">حالة الاشراف</th>
             <th scope="col">العنوان</th>
             <th scope="col">الصورة الشخصية</th>
             <th scope="col">حذف/تعديل</th>
@@ -75,6 +76,15 @@
             {% if supervisor.user.user_type == 'supervisor' %}
                 <td>مشرف</td>
             {% endif %}
+            <td>
+                
+                {% if supervisor.user.is_staff %}
+                    نشط
+                {% else %}
+                    غير نشط
+                {% endif %}
+                    
+            </td>
             <td>{{supervisor.user.address}}</td>
             <td>
                 <img src="{{supervisor.user.image.url}}" width="100px" height="100px" alt="">

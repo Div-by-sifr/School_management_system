@@ -108,6 +108,7 @@ class AddSupervisorForm(UserCreationForm):
     def save(self, commit=True):
         user = super().save(commit=False)
         user.user_type = CustomUser.USER_TYPE_SUPERVISOR
+        user.is_staff=True
         if commit:
             user.save()
             SupervisorProfile.objects.create(user=user)
@@ -414,14 +415,17 @@ class EditStudentForm(UserChangeForm):
         required=False,
         widget=forms.DateTimeInput(attrs={'class': 'form-control', 'type': 'datetime-local'})
     )
-
+    add_by = forms.ModelChoiceField(
+        queryset=SupervisorProfile.objects.all(),
+        widget=HiddenInput()
+    )
 
     class Meta:
         model = CustomUser
         fields = [
             'full_name', 'gender', 'email', 'phone_number',
             'birthday', 'address', 'image',
-            'section', 'date_joining_sections',
+            'section', 'date_joining_sections','add_by',
         ]
 
 
@@ -441,7 +445,7 @@ class EditStudentForm(UserChangeForm):
         return phone_number
 
 
-    def save(self, commit=True, supervisor=None):
+    def save(self, commit=True):
         # 1) حفظ أو تحديث بيانات CustomUser
         try:
             user = super().save(commit=False)
@@ -459,8 +463,8 @@ class EditStudentForm(UserChangeForm):
 
         profile.section = self.cleaned_data.get('section')
         profile.date_joining_sections = self.cleaned_data.get('date_joining_sections')
-        if supervisor:
-            profile.add_by = supervisor
+        profile.add_by=self.cleaned_data.get('add_by')
+
 
         try:
             profile.save()
@@ -512,7 +516,10 @@ class AddAcademicStudentLevel(forms.ModelForm):
         required=False,
         widget=forms.CheckboxInput(attrs={'class':'form-check-input'})
     )
+    student=forms.HiddenInput()
     class Meta():
         model=Students_Academic_Levels
-        fields=['academic_levels','registration_date','is_current']
-        exclude=['student']
+        fields=['academic_levels','registration_date','is_current','student']
+    
+    def save(self):
+        pass

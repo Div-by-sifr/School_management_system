@@ -70,7 +70,8 @@ class SupervisorProfile(models.Model):
     user=models.OneToOneField(
         CustomUser,
         on_delete=models.CASCADE,
-        limit_choices_to={'user_type': CustomUser.USER_TYPE_SUPERVISOR}
+        limit_choices_to={'user_type': CustomUser.USER_TYPE_SUPERVISOR},
+        related_name='SupervisorProfile',
     )
     def __str__(self):
         return f"{self.user.full_name}"

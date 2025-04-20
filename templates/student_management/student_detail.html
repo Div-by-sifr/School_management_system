@@ -16,7 +16,7 @@
     </a>
 </li>
 <li class="breadcrumb-item  active px-0">
-    <span>&gt;</span> {{user}}
+    <span>&gt;</span> {{student}}
 </li>
 {% endblock breadcrumb %}
 {% block content %}
@@ -29,18 +29,18 @@
       <div class="col-lg-4">
         <div class="card mb-4">
           <div class="card-body text-center">
-            <img src="{{user.image.url}}" alt="avatar"
+            <img src="{{student.image.url}}" alt="avatar"
               class="rounded-circle img-fluid" style="width: 150px;">
-            <h5 class="my-3">{{user.full_name}}</h5>
+            <h5 class="my-3">{{student.full_name}}</h5>
             <p class="text-muted mb-1">
-                {% if not user.StudentProfile.section %}
+                {% if not student.StudentProfile.section %}
                     <p>الشعبة: غير مسجل</p>
                 {% else %}
-                    <p>الشعبة:{{ user.StudentProfile.section.name }}</p>
+                    <p>الشعبة:{{ student.StudentProfile.section.name }}</p>
                 {% endif %}
             </p>
             <p class="text-muted mb-4">
-                {% with rec=user.StudentProfile.latest_academic_record %}
+                {% with rec=student.StudentProfile.latest_academic_record %}
                     {% if rec %}
                         <p>المستوى الاكاديمي:{{ rec.academic_levels }}</p>
                     {% else %}
@@ -50,8 +50,8 @@
 
             </p>
             <div class="d-flex justify-content-center mb-2">
-              <a  href="{% url 'accounts:student_edit' user.id %}" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary ms-1">تعديل</ش>
-              <a   href="{% url 'accounts:student_delete' user.id %}"  data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-danger">حذف</a>
+              <a  href="{% url 'accounts:student_edit' student.id  %}" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary ms-1">تعديل</ش>
+              <a   href="{% url 'accounts:student_delete' student.id %}"  data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-danger">حذف</a>
             </div>
           </div>
         </div>
@@ -110,7 +110,7 @@
                 <p class="mb-0">الاسم كامل</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0">{{user.full_name}}</p>
+                <p class="text-muted mb-0">{{student.full_name}}</p>
               </div>
             </div>
             <hr>
@@ -119,7 +119,7 @@
                     <p class="mb-0">العمر</p>
                 </div>
                 <div class="col-sm-9">
-                    <p class="text-muted mb-0">{{user.age}}</p>
+                    <p class="text-muted mb-0">{{student.age}}</p>
                 </div>
             </div>
             <hr>
@@ -129,7 +129,7 @@
                 <p class="mb-0">البريد الالكتروني</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0">{{user.email}}</p>
+                <p class="text-muted mb-0">{{student.email}}</p>
               </div>
             </div>
             <hr>
@@ -138,7 +138,7 @@
                 <p class="mb-0">رقم الجوال</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0">{{user.phone_number}}</p>
+                <p class="text-muted mb-0">{{student.phone_number}}</p>
               </div>
             </div>
             <hr>
@@ -148,9 +148,9 @@
               </div>
               <div class="col-sm-9">
                 <p class="text-muted mb-0">
-                    {% if user.gender == "M" %}
+                    {% if student.gender == "M" %}
                         ذكر
-                    {% elif user.gender == "F" %}
+                    {% elif student.gender == "F" %}
                         انثى
                     {% endif %}
                 </p>
@@ -162,7 +162,7 @@
                 <p class="mb-0">العنوان</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0">{{user.address}}</p>
+                <p class="text-muted mb-0">{{student.address}}</p>
               </div>
             </div>
             <hr>
@@ -171,7 +171,7 @@
                 <p class="mb-0">تاريخ الميلاد</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0">{{user.birthday}}</p>
+                <p class="text-muted mb-0">{{student.birthday}}</p>
               </div>
             </div>
             <hr>
@@ -181,7 +181,7 @@
               </div>
               <div class="col-sm-9">
                 <p class="text-muted mb-0">
-                    {% if user.is_active %}
+                    {% if student.is_active %}
                         نشط
                     {% else %}
                         غير نشط
@@ -195,7 +195,7 @@
                     <p class="mb-0">اضيف من قبل المشرف</p>
                 </div>
                 <div class="col-sm-9">
-                    <p class="text-muted mb-0">{{user.StudentProfile.add_by}}</p>
+                    <p class="text-muted mb-0">{{student.StudentProfile.add_by}}</p>
                 </div>
             </div>
           </div>
@@ -214,7 +214,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for level in user.StudentProfile.student_level.all %}
+                    {% for level in student.StudentProfile.student_level.all %}
                     <tr>
                         <td>{{level.pk}}</td>
                         <td>{{level.academic_levels}}</td>
@@ -231,7 +231,7 @@
                         </td>
                         <td>
                         {% include 'confirm_deletion.html' %}
-                          <a href="{% url 'accounts:edit_level' user.pk level.pk %}" class="mx-2">
+                          <a href="{% url 'accounts:edit_level' student.pk level.pk %}" class="mx-2">
                             <i class="fas fa-edit ">
                             </i>
                           </a>

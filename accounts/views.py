@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
-from .forms import AddSupervisorForm,LoginForm,EditSupervisorForm,AddStudentForm,EditStudentForm,EditAcademicStudentLevel
+from .forms import AddSupervisorForm,LoginForm,EditSupervisorForm,AddStudentForm,EditStudentForm,EditAcademicStudentLevel,AddAcademicStudentLevel
 from .models import  StudentProfile,CustomUser,SupervisorProfile
 from academics.models import Students_Academic_Levels
 from django.contrib.auth.decorators import login_required
@@ -44,16 +44,12 @@ def signup(request):
     if request.method == 'POST':
         form=AddSupervisorForm(request.POST, request.FILES)
         if form.is_valid():
-            temp=form.save(commit=False)
-            user_type=temp.user_type
-            
-            if user_type==CustomUser.USER_TYPE_SUPERVISOR:
-                temp.is_staff=True
-                temp.is_superuser=True
-                temp.save()
-                SupervisorProfile.objects.create(user=temp)
-            auth_login(request, temp)
-            return redirect('home')
+            try:
+                user=form.save()
+                auth_login(request, user)
+                return redirect('accounts:home')
+            except Exception as e:
+                messages.info(request, 'حصلت مشكلة ولم يتم اضافة مشرف'+str(e))
     return render(request, 'register.html',{'form':form})
 
 
@@ -88,8 +84,8 @@ def supervisor_add(request):
                 messages.info(request, 'حصلت مشكلة ولم يتم اضافة مشرف'+str(e))
                 return redirect ('accounts:supervisor_list')
         else:
-            form = AddSupervisorForm()
-        return render(request, 'supervisor_add.html', {'form': form})
+            
+            return render(request, 'supervisor_add.html', {'form': AddSupervisorForm()})
 
 
 @login_required
@@ -150,13 +146,14 @@ def supervisor_search(request):
 
 #-----------------------------Student Management------------------------------
 @login_required
+@is_supervisor
 def student_management(request):
     return render(request,'student_management.html')
 
 @login_required
 @is_supervisor
 def student_add(request):
-    initial_data = {'add_by': request.user.supervisorprofile}
+    initial_data = {'add_by': request.user.SupervisorProfile}
     if request.method=='POST':
         form =AddStudentForm(request.POST,request.FILES,initial=initial_data)
         try:
@@ -176,6 +173,7 @@ def student_add(request):
 
 
 @login_required
+@is_supervisor
 def student_list(request):
     students=StudentProfile.objects.all()
     
@@ -220,6 +218,7 @@ def student_edit(request, pk):
     initial = {
         'section': profile.section,
         'date_joining_sections': profile.date_joining_sections,
+        'add_by':request.user.SupervisorProfile,
     }
 
     # 4) إنشاء الفورم مع instance و initial
@@ -239,7 +238,7 @@ def student_edit(request, pk):
                     if os.path.exists(user.image.path):
                         os.remove(user.image.path)
 
-                form.save(supervisor=request.user.supervisorprofile)
+                form.save()
                 messages.success(request, 'تم تعديل بيانات الطالب بنجاح')
                 return redirect('accounts:student_list')
             except Exception as e:
@@ -268,7 +267,7 @@ def student_details(request,pk):
     except CustomUser.DoesNotExist:
         messages.error(request,f"الطالب برقم المعرف {pk} غير موجود")
         return redirect('accounts:student_list')
-    return render(request,'student_detail.html',{'user':student})
+    return render(request,'student_detail.html',{'student':student})
 
 
 
@@ -325,3 +324,12 @@ def student_add_academic_level(request,pk):
     except CustomUser.DoesNotExist:
         messages.error(request,'الطالب غير موجود')
         return redirect('accounts:student_detail',pk=pk)
+    student_levels=student.StudentProfile.student_level
+    form=AddAcademicStudentLevel(
+        request.POST or None,
+    )
+    if request.method == "POST" and form.is_valid():
+        form.save()
+        messages.success(request,f'تم اضافة مستوى اكاديمي للطالب {student}')
+        return redirect('accounts:student_details',pk=pk) 
+            
