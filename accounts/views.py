@@ -9,29 +9,31 @@ from django.contrib import messages
 import os
 from .decorators import is_supervisor
 from .filters import CustomUserFilter
-from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
 
+#--------------------------------Home page---------------------------
 
 def home(request):
     
     return render(request, 'home.html')
 
+
+#--------------------------------Accounts Management---------------------------
 def login(request):
     if request.user.is_authenticated:
         messages.info(request, 'أنت مسجل دخول بالفعل.')
         return redirect('accounts:home')  #
         
     
-    form = LoginForm(request.POST or None)  # إنشاء الفورم سواءً كانت الطلبية POST أو GET
-    if request.method == 'POST':
-        if form.is_valid():
-            user = form.get_user()
-            auth_login(request, user)
-            return redirect('accounts:home')  # توجيه المستخدم إلى الصفحة الرئيسية بعد تسجيل الدخول
+    form = LoginForm(request, data=request.POST or None)
+    if request.method == 'POST' and form.is_valid():
+        auth_login(request, form.get_user())
+        return redirect('accounts:home')  # توجيه المستخدم إلى الصفحة الرئيسية بعد تسجيل الدخول
 
-    return render(request, 'login.html', {'form': LoginForm()})  # عرض الفورم مع الأخطاء إن وجدت
+    return render(request, 'login.html', {'form': form})  # عرض الفورم مع الأخطاء إن وجدت
+
+
 @login_required
 def logout(request):
     auth_logout(request)

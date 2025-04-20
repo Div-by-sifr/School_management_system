@@ -26,7 +26,7 @@ class Section(models.Model):
     add_by = models.ForeignKey('accounts.SupervisorProfile',default=None ,on_delete=models.DO_NOTHING, null=True, blank=True)
     
     def __str__(self):
-        return f'{self.name}'
+        return f'{self.name}/{self.academic_level}'
 
 class Term(models.Model):
     term_number=models.IntegerField()

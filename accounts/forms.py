@@ -1,6 +1,7 @@
 from django import forms
 from .models import CustomUser,StudentProfile,SupervisorProfile
 from django.contrib.auth import authenticate
+from django.contrib.auth.forms import AuthenticationForm
 from django.utils.safestring import mark_safe
 from academics.models import Section,Students_Academic_Levels,AcademicLevel
 import re
@@ -111,8 +112,13 @@ class AddSupervisorForm(UserCreationForm):
             user.save()
             SupervisorProfile.objects.create(user=user)
         return user
-class LoginForm(forms.Form):
-    phone_number = forms.CharField(
+class LoginForm(AuthenticationForm):
+    """
+    The username field is used because the AuthenticationForm class inherits the login field as username.
+    The built-in user class has been modified by Django,
+    so in order for the AuthenticationForm class to recognize a login field, we are required to name it "username".    
+    """
+    username = forms.CharField(
         label='رقم الجوال', 
         widget=forms.TextInput(attrs={
             'class': 'form-control',
@@ -122,23 +128,16 @@ class LoginForm(forms.Form):
             'inputmode': 'numeric',
             'oninput': "this.value=this.value.replace(/[^0-9]/g,'')",
             'maxlength': '15',
+            'autofocus': True,
         }))
-    password = forms.CharField(label="كلمة المرور", widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    password = forms.CharField(
+        label="كلمة المرور",
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'autocomplete':'current-password',
+            }),
+        )
 
-    def clean(self):
-        cleaned_data = super().clean()
-        phone_number = cleaned_data.get("phone_number")
-        password = cleaned_data.get("password")
-
-        if phone_number and password:
-            user = authenticate(username=phone_number, password=password)
-            if user is None:
-                raise forms.ValidationError("رقم الجوال أو كلمة المرور غير صحيحة.")
-            self.user = user  # تخزين المستخدم لاستخدامه لاحقًا
-        return cleaned_data
-
-    def get_user(self):
-        return self.user
 
 
 class EditSupervisorForm(UserChangeForm):
@@ -199,13 +198,6 @@ class EditSupervisorForm(UserChangeForm):
         if CustomUser.objects.filter(phone_number=phone_number).exclude(pk=user).exists():
             raise forms.ValidationError("رقم الجوال مستخدم من قبل")
         return phone_number
-
-
-
-
-
-
-
 
 
 class AddStudentForm(UserCreationForm):
@@ -501,3 +493,6 @@ class EditAcademicStudentLevel(forms.ModelForm):
         model=Students_Academic_Levels
         fields=['academic_levels','registration_date','is_current']
         exclude=['student']
+
+class AddAcademicStudentLevel(forms.ModelForm):
+    pass
