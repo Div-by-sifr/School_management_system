@@ -51,7 +51,6 @@
             <th scope="col">الجنس</th>
             <th scope="col">رقم الهاتف</th>
             <th scope="col">البريد الالكتروني</th>
-            <th scope="col">نوع المستخدم</th>
             <th scope="col">العنوان</th>
             <th scope="col">الشعبة</th>
             <th scope="col">المستوى الاكاديمي</th>
@@ -76,9 +75,7 @@
             <td>{{student.user.phone_number}}</td>
             <td>{{student.user.email}}</td>
             
-            {% if student.user.user_type == 'student' %}
-                <td>طالب</td>
-            {% endif %}
+           
             <td>{{student.user.address}}</td>
 {% if not student.section %}
     <td>غير مسجل</td>
@@ -101,7 +98,7 @@
                 
             <td>
                 
-                 <a href="{% url 'accounts:student_delete' student.user.id %}" class='mx-3' > 
+                 <a href="{% url 'accounts:student_delete' student.user.id %}" class='mx-2' > 
                     <i class="fas fa-trash-alt text-danger">
                     </i>
                 </a>
@@ -109,7 +106,7 @@
                     <i class="fas fa-edit ">
                     </i>
                 </a>
-                <a href="{% url 'accounts:student_details' student.user.id %}" class="text-info mx-3">
+                <a href="{% url 'accounts:student_details' student.user.id %}" class="text-info mx-2">
                     <i class="fa-solid fa-circle-info"></i>
                 </a>
         
