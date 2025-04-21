@@ -509,17 +509,39 @@ class AddAcademicStudentLevel(forms.ModelForm):
     registration_date=forms.DateTimeField(
         label='تاريخ التسجيل بالمستوى الأكاديمي',
         required=True,
-        widget=forms.DateTimeInput(attrs={'class':'form-control', 'type': 'datetime-local'}),
-        ),
+        widget=forms.DateTimeInput(attrs={
+                'class': 'form-control',
+                'type': 'datetime-local'
+            }),
+    )
     is_current=forms.BooleanField(
         label='هل الطالب مسجل حالياً في هذه المستوى',
         required=False,
         widget=forms.CheckboxInput(attrs={'class':'form-check-input'})
     )
-    student=forms.HiddenInput()
+    student=forms.ModelChoiceField(
+        queryset=StudentProfile.objects.all(),
+        widget=forms.HiddenInput()
+    )
     class Meta():
         model=Students_Academic_Levels
         fields=['academic_levels','registration_date','is_current','student']
     
-    def save(self):
-        pass
+    def save(self,commit=True,student=None):
+        instance=super().save(commit=False)
+        if student is not None:
+            instance.student=student
+        elif self.cleaned_data.get('student'):
+            instance.student = self.cleaned_data['student']
+        else:
+            raise forms.ValidationError("لم يتم تمرير الطالب، ولا يوجد في البيانات المخفية.")
+        
+        if instance.is_current:
+            Students_Academic_Levels.objects.filter(
+                student=instance.student,
+                is_current=True,
+            ).exclude(pk=instance.pk).update(is_current=False)
+
+        if commit:
+            instance.save()
+        return instance

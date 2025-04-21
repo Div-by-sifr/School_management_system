@@ -9,6 +9,7 @@ from django.contrib import messages
 import os
 from .decorators import is_supervisor
 from .filters import CustomUserFilter
+from django import forms
 
 # Create your views here.
 
@@ -290,29 +291,47 @@ def student_academic_level_delete(request,pk):
 
 @login_required
 @is_supervisor
-def student_edit_academic__level(request,pk,level):
+def student_edit_academic__level(request, pk, level):
     try:
-        student=CustomUser.objects.get(pk=pk)
-        student_level=Students_Academic_Levels.objects.get(pk=level)
+        student = CustomUser.objects.get(pk=pk)
+        student_level = Students_Academic_Levels.objects.get(pk=level)
     except Students_Academic_Levels.DoesNotExist:
         messages.error(request, f'سجل المستوى الأكاديمي لهذا الطالب {student.full_name} غير موجود')
-        return redirect('accounts:student_details',pk=pk)
-    form=EditAcademicStudentLevel(
+        return redirect('accounts:student_details', pk=pk)
+
+    form = EditAcademicStudentLevel(
         request.POST or None,
         instance=student_level
     )
+
     try:
         if request.method == 'POST':
             if form.is_valid():
+                # إذا تم اختيار هذا المستوى كـ "حالي"
+                if form.cleaned_data.get('is_current'):
+                    # تحقق إن كان هناك مستوى آخر مسجل كـ "حالي" لهذا الطالب
+                    current_other_level = Students_Academic_Levels.objects.filter(
+                        student=student_level.student,
+                        is_current=True
+                    ).exclude(pk=student_level.pk).first()
+
+                    if current_other_level:
+                        messages.error(
+                            request,
+                            f"لا يمكنك تعيين هذا المستوى كـ (حالي) لأن الطالب مسجل حالياً في المستوى: {current_other_level.academic_levels}"
+                        )
+                        return render(request, 'student_edit_level.html', {'form': form, 'student': student})
+
+                # في حال لم يكن هناك تضارب، نحفظ النموذج
                 form.save()
-                messages.success(request,'تم تعديل مستوى الطالب')
-                return redirect('accounts:student_details',pk=pk)
+                messages.success(request, 'تم تعديل مستوى الطالب')
+                return redirect('accounts:student_details', pk=pk)
             else:
                 messages.error(request, 'تأكد من صحة البيانات المدخلة')
     except Exception as e:
-                form.add_error(None, f'حدث خطأ أثناء تعديل البيانات: {e}')
-    return render(request,'student_edit_level.html',{'form': form,'student':student})
+        form.add_error(None, f'حدث خطأ أثناء تعديل البيانات: {e}')
 
+    return render(request, 'student_edit_level.html', {'form': form, 'student': student})
 
 # -----------------------add level form student-------------------------
 
@@ -324,12 +343,30 @@ def student_add_academic_level(request,pk):
     except CustomUser.DoesNotExist:
         messages.error(request,'الطالب غير موجود')
         return redirect('accounts:student_detail',pk=pk)
-    student_levels=student.StudentProfile.student_level
-    form=AddAcademicStudentLevel(
-        request.POST or None,
-    )
-    if request.method == "POST" and form.is_valid():
-        form.save()
-        messages.success(request,f'تم اضافة مستوى اكاديمي للطالب {student}')
-        return redirect('accounts:student_details',pk=pk) 
-            
+    form=AddAcademicStudentLevel(request.POST or None, initial={'student': student.StudentProfile})
+
+    if request.method == "POST":
+        if form.is_valid():
+            try:
+                if form.cleaned_data.get('is_current'):
+                    current_other_level=Students_Academic_Levels.objects.filter(
+                        student=student.StudentProfile,
+                        is_current=True
+                    ).first()
+                    if current_other_level:
+                        messages.error(
+                            request,
+                            f"لا يمكنك تعيين هذا المستوى كـ (حالي) لأن الطالب مسجل حالياً في المستوى: {current_other_level.academic_levels}"
+                        )
+                        return render(request, 'student_add_academic_level.html', {'form': form, 'student': student})
+                form.save(student=student.StudentProfile)
+                messages.success(request,f'تم اضافة مستوى اكاديمي للطالب {student}')
+                return redirect('accounts:student_details',pk=pk) 
+            except forms.ValidationError as e:
+                print(form.errors.as_json())
+        else:
+            messages.error(request,'حدث خطأ تاكد من الحقول المدخلة')
+    return render(request, 'student_add_academic_level.html', {
+        'form': form,
+        'student': student,
+    })
