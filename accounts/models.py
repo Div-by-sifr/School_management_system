@@ -38,7 +38,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         (USER_TYPE_GUARDIAN, 'ولي أمر'),
         (USER_TYPE_SUPERVISOR, 'مشرف'),
     ]
-    phone_number = models.CharField(max_length=15, unique=True)
+    phone_number = models.CharField(max_length=15, unique=True,   verbose_name='رقم الجوال')
     user_type = models.CharField(max_length=10, choices=USER_TYPE_CHOICES)
     
     # حقول مشتركة لجميع المستخدمين

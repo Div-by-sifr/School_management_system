@@ -71,7 +71,7 @@ class AddSupervisorForm(UserCreationForm):
 
     class Meta:
         model = CustomUser
-        fields = ('full_name','gender', 'email', 'phone_number', 'password1', 'password2', 'birthday','address', 'image')
+        fields = ['full_name','gender', 'email', 'phone_number', 'password1', 'password2', 'birthday','address', 'image']
 
     def clean_email(self):
         email = self.cleaned_data.get("email")
@@ -119,6 +119,7 @@ class LoginForm(AuthenticationForm):
     The built-in user class has been modified by Django,
     so in order for the AuthenticationForm class to recognize a login field, we are required to name it "username".    
     """
+    
     username = forms.CharField(
         label='رقم الجوال', 
         widget=forms.TextInput(attrs={

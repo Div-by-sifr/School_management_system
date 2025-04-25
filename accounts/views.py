@@ -41,17 +41,22 @@ def logout(request):
     return redirect('accounts:home') 
 
 def signup(request):
-    form=AddSupervisorForm()
     if request.method == 'POST':
-        form=AddSupervisorForm(request.POST, request.FILES)
+        form = AddSupervisorForm(request.POST, request.FILES)
         if form.is_valid():
             try:
-                user=form.save()
+                user = form.save()
                 auth_login(request, user)
                 return redirect('accounts:home')
             except Exception as e:
-                messages.info(request, 'حصلت مشكلة ولم يتم اضافة مشرف'+str(e))
-    return render(request, 'register.html',{'form':form})
+                # تحول الخطأ إلى خطأ عام في الفورم بدلاً من رسالة مؤقتة
+                form.add_error(None, f'حصلت مشكلة ولم يتم إضافة المشرف: {e}')
+        # إذا لم يكن الفورم صالحًا (مثلاً clean_phone_number رمى ValidationError)
+        # فسوف يصل هنا ويعاد عرض form.errors تحت الحقول تلقائيًا
+    else:
+        form = AddSupervisorForm()
+
+    return render(request, 'register.html', {'form': form})
 
 
 

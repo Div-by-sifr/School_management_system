@@ -16,20 +16,40 @@
       <div class="form-group col-12 mt-3">
         {{ field.label_tag }}
 
-        {# حقل البريد الإلكتروني يكتب من اليسار إلى اليمين #}
-        {% if field.name == "email" %}
-          {% render_field field class="form-control" dir="ltr" %}
-        {% elif field.name == "phone_number" %}
-          {% render_field field class="form-control" dir="ltr"%}
-        {% elif field.name == "password" %}
-          {% render_field field class="form-control" type="password" %}
-        
-        {% elif field.name == "is_active" %}
-          {% render_field field class="form-check-input custom-check-box" %}
+        {# Checkboxes: is_active & is_current #}
+        {% if field.name in "is_active is_current" %}
+          {% if field.errors %}
+            {% render_field field class="form-check-input custom-check-box is-invalid" %}
+            {% for error in field.errors %}
+              <div class="invalid-feedback d-block">{{ error }}</div>
+            {% endfor %}
+          {% else %}
+            {% render_field field class="form-check-input custom-check-box" %}
+          {% endif %}
 
-        {% elif field.name == "is_current" %}
-          {% render_field field class="form-check-input custom-check-box" %}
+        {# Email & phone: LTR inputs #}
+        {% elif field.name == "email" or field.name == "phone_number" %}
+          {% if field.errors %}
+            {% render_field field class="form-control is-invalid" dir="ltr" %}
+            {% for error in field.errors %}
+              <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+          {% else %}
+            {% render_field field class="form-control" dir="ltr" %}
+          {% endif %}
 
+        {# Password fields: password1 & password2 #}
+        {% elif field.name in "password1 password2" %}
+          {% if field.errors %}
+            {% render_field field class="form-control is-invalid" type="password" %}
+            {% for error in field.errors %}
+              <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+          {% else %}
+            {% render_field field class="form-control" type="password" %}
+          {% endif %}
+
+        {# All other fields #}
         {% else %}
           {% if field.errors %}
             {% render_field field class="form-control is-invalid" %}
