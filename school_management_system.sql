@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2025 at 02:57 AM
+-- Generation Time: Apr 25, 2025 at 10:17 PM
 -- Server version: 11.4.3-MariaDB
 -- PHP Version: 8.2.12
 
@@ -225,7 +225,7 @@ CREATE TABLE `accounts_customuser` (
 --
 
 INSERT INTO `accounts_customuser` (`id`, `password`, `last_login`, `is_superuser`, `phone_number`, `user_type`, `full_name`, `birthday`, `gender`, `address`, `is_active`, `is_staff`, `date_joined`, `email`, `image`) VALUES
-(4, 'pbkdf2_sha256$870000$KZrWJLRIXK0D6I3fkfbYpA$dL3JRdizdTdyGu9snG+Y7DElQcTzQQAq291p6ltl0cA=', '2025-04-20 22:54:29.605397', 1, '770489242', 'supervisor', 'صالح محمد صالح الجبري', '2004-02-11', 'M', 'شارع العدين', 1, 1, '2025-03-29 07:42:18.306036', 's96557867@gmail.com', 'images/25/04/03/lacoste_1.png'),
+(4, 'pbkdf2_sha256$870000$KZrWJLRIXK0D6I3fkfbYpA$dL3JRdizdTdyGu9snG+Y7DElQcTzQQAq291p6ltl0cA=', '2025-04-25 20:13:02.088324', 1, '770489242', 'supervisor', 'صالح محمد صالح الجبري', '2004-02-11', 'M', 'شارع العدين', 1, 1, '2025-03-29 07:42:18.306036', 's96557867@gmail.com', 'images/25/04/03/lacoste_1.png'),
 (24, 'pbkdf2_sha256$870000$0CNsiZFJZ7mL8W3JBJ9KXE$T7CY3Mde1XDBw7AyqcI21ZQBkXYMsJseAEEEycpCDrI=', NULL, 1, '85486451', 'supervisor', 'محمد صالح عبدالله الجبري', '1963-02-11', 'M', 'Al-Udayn Street', 1, 1, '2025-04-03 07:13:59.869469', 'abnalyemen166@gmail.com', 'images/25/04/03/polo_2.jpg'),
 (34, 'pbkdf2_sha256$870000$KvzRTVTyjgFhoTjNo14iQH$mTd2HtTprj55ZamB0Qytqni+/aPtpL3gr8Z8e8dl51I=', NULL, 0, '0096777498986', 'student', 'علي نشوان الشاوؤش', '2004-03-11', 'M', 'شارع العدين', 1, 0, '2025-04-06 12:25:19.981037', 'alinashwan@gmail.com', 'images/25/04/07/Screenshot_2025-04-06_132129.png'),
 (35, 'pbkdf2_sha256$870000$XgP9cOoH4kCsHMTh99bslW$dmCzjrOfNo/+zNFvdec7QHUB1rWaipJ0FqMXClkJtpU=', NULL, 0, '777686999', 'student', 'حسين محمد علي الجبري', '2004-03-11', 'M', 'مستشفى الثوره', 1, 0, '2025-04-07 10:16:32.781509', 'hosean@gmail.com', 'images/25/04/07/adidas_4.jpg'),
@@ -881,10 +881,10 @@ CREATE TABLE `django_session` (
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
 ('0ie9ons9ys1ty9augb8vigq9902gckgx', 'e30:1u6dGg:q24p2g-8k_y1k4pgZK_KTGilJsbM3Q7fVHRsvQdAAxA', '2025-05-04 22:36:06.623830'),
 ('cqzlun81nmvgj9gukdu7hc1vzpr2cahx', 'e30:1tzsY6:UQPP3FvO9H5ar2pmu5W51XUp85CAPEER6eVvTQi8FDs', '2025-04-16 07:30:10.341267'),
-('cu729twdsmg09wfzyay9xk7yjbeaxi8g', '.eJxVjEEOwiAQRe_C2hAYpjC4dO8ZCAxUqoYmpV0Z765NutDtf-_9lwhxW2vYelnClMVZoDj9binyo7Qd5Htst1ny3NZlSnJX5EG7vM65PC-H-3dQY6_fmtiwTs4T-pFRYdLgrGU_sFEu5wgeEhiVyCAQoQa06Kg4O7qBwGbx_gC-nzZs:1u6dYT:4yYKAMyRvQG4J0MABQPVMmGMYX76s7ISGvbFvg4i8Ao', '2025-05-04 22:54:29.612070'),
 ('ds6m3gz51yj0xspn9rt1x9dpa3js2n01', 'e30:1u6EQG:rTpRUd6PDOiWneT7yS2TrKAR5139zH5qYfB5NaNqRlk', '2025-05-03 20:04:20.579173'),
 ('dvunkplva86waki7tk60wuiszwfepowt', '.eJxVjEEOwiAQRe_C2hBKgQGX7j0DYWZAqoYmpV0Z765NutDtf-_9l4hpW2vcel7ixOIsjDj9bpjokdsO-J7abZY0t3WZUO6KPGiX15nz83K4fwc19fqtdUHQOCY_OrBGIxKSIQaLThVgNaiQ_RDIO3CKFQZbgg4GgT3rDCTeH-ZON-M:1tztTp:OvmglwqAXjfWC2WAofMFYZJ0C26Y4DNQUeGC1eKR9-8', '2025-04-16 08:29:49.554958'),
 ('knjeope7bmiiqqe08sc3rrh2nz6cksb1', '.eJxVjEEOwiAQRe_C2hChUAaX7j0DGWZGqRpISrsy3l2bdKHb_977L5VwXUpau8xpYnVSzqnD75iRHlI3wnest6ap1WWest4UvdOuL43led7dv4OCvXxriCNGIiCLLgtSGIglZBECb68sbEYZImRmYGIbAKMxwUXjPR6tJ_X-AEtROTo:1u6EUv:cwElKvanFz942WqcZHFzsnBmCrmwpd6LlJDj8-rNvrQ', '2025-05-03 20:09:09.777420'),
+('o5ka2ie1uday0fkkbn26np4vxd091voa', '.eJxVjEEOwiAQRe_C2hAYpjC4dO8ZCAxUqoYmpV0Z765NutDtf-_9lwhxW2vYelnClMVZoDj9binyo7Qd5Htst1ny3NZlSnJX5EG7vM65PC-H-3dQY6_fmtiwTs4T-pFRYdLgrGU_sFEu5wgeEhiVyCAQoQa06Kg4O7qBwGbx_gC-nzZs:1u8PPy:CNiVOjTiEkV7erjD4duOds0Dswn0HSOyTZ1LaJkDoQc', '2025-05-09 20:13:02.094241'),
 ('zunbt7sty72rkir26h9kfog2b3zkzdu8', '.eJxVjEEOwiAQRe_C2hBKgQGX7j0DYWZAqoYmpV0Z765NutDtf-_9l4hpW2vcel7ixOIsjDj9bpjokdsO-J7abZY0t3WZUO6KPGiX15nz83K4fwc19fqtdUHQOCY_OrBGIxKSIQaLThVgNaiQ_RDIO3CKFQZbgg4GgT3rDCTeH-ZON-M:1tzE9s:6FaBvg1zEouA7O10_OjGCpXDr3G6erLRu-esrftzHXQ', '2025-04-14 12:22:28.204370');
 
 -- --------------------------------------------------------
@@ -1322,7 +1322,7 @@ ALTER TABLE `academics_term`
 -- AUTO_INCREMENT for table `accounts_customuser`
 --
 ALTER TABLE `accounts_customuser`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `accounts_customuser_groups`
@@ -1358,7 +1358,7 @@ ALTER TABLE `accounts_studentprofile`
 -- AUTO_INCREMENT for table `accounts_supervisorprofile`
 --
 ALTER TABLE `accounts_supervisorprofile`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `accounts_teacherprofile`
