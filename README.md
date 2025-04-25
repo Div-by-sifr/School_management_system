@@ -38,15 +38,25 @@ A web-based School Management System built with Django, designed to manage users
 ## Models Overview
 
 - **CustomUser** (`AbstractBaseUser` + `PermissionsMixin`)
-  - `phone_number` (USERNAME\_FIELD), `user_type`, `full_name`, `birthday`, `gender`, `address`, `email`, `image`, `is_active`, `is_staff`
+  - `phone_number` (USERNAME_FIELD), `user_type`, `full_name`, `birthday`, `gender`, `address`, `email`, `image`, `is_active`, `is_staff`
 - **SupervisorProfile**
-  - FK to `CustomUser` (user\_type=supervisor)
+  - FK to `CustomUser` (user_type=supervisor)
 - **StudentProfile**
-  - OneToOne to `CustomUser` (user\_type=student), `section`, `date_joining_sections`, `add_by` (Supervisor)
+  - OneToOne to `CustomUser` (user_type=student), `section`, `date_joining_sections`, `add_by` (Supervisor)
 - **AcademicLevel**
   - `name`, `academic_year`, `level_order`
-- **Students\_Academic\_Levels**
+- **Students_Academic_Levels**
   - FK to `StudentProfile`, FK to `AcademicLevel`, `registration_date`, `is_current`
+
+## Database Diagrams
+
+You can view and edit the project’s Entity-Relationship Diagram (ERD) using Mermaid Chart:
+
+- **Editor**: [Mermaid Chart Editor](https://www.mermaidchart.com/app/projects/532fb716-aa7b-4050-a479-64716a789f96/diagrams/ceb05a3c-3981-4f40-9d26-ea181c7d0966/version/v0.1/edit)
+
+Below is the current diagram preview:
+
+![Database Diagram](https://www.mermaidchart.com/raw/ceb05a3c-3981-4f40-9d26-ea181c7d0966?theme=dark&version=v0.1&format=svg)
 
 ## Installation
 
@@ -114,13 +124,7 @@ python manage.py migrate
 - Add, edit, delete students and academic levels
 - Search/filter lists with django-filter on list pages
 
-## Contributing
 
-1. Fork the repo
-2. Create a new branch: `git checkout -b feature/YourFeature`
-3. Commit your changes: `git commit -m 'Add some feature'`
-4. Push: `git push origin feature/YourFeature`
-5. Create a PR
 
 
 
