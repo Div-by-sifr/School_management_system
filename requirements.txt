@@ -1,0 +1,5 @@
+Django==5.1.7
+django-widget-tweaks
+django-filter
+Pillow
+mysqlclient
