@@ -1,7 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
-from django.contrib.auth import login as auth_login
-from django.contrib.auth import logout as auth_logout
+from django.contrib.auth import login as auth_login,logout as auth_logout
 from .forms import AddSupervisorForm,LoginForm,EditSupervisorForm,AddStudentForm,EditStudentForm,EditAcademicStudentLevel,AddAcademicStudentLevel
 from .models import  StudentProfile,CustomUser,SupervisorProfile
 from academics.models import Students_Academic_Levels
@@ -66,6 +65,13 @@ def my_profile(request):
     
     return render(request,'my_profile.html',{'user':user})
 
+
+
+@login_required
+@is_supervisor
+def password_change_done(request):
+    messages.success(request,'تم تغيير كلمة المرور بنجاح')
+    return render(request,'home.html')
 
 #-----------------------------Supervisor Management------------------------------
 
