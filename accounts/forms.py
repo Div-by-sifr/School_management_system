@@ -141,8 +141,6 @@ class LoginForm(AuthenticationForm):
         )
 
 
-class ChangeMyPassword(UserChangeForm):
-    pass
 
 class EditSupervisorForm(UserChangeForm):
     password = None
