@@ -55,7 +55,7 @@
             <ul class="dropdown-menu dropdown-menu-end" style='text-align:right' aria-labelledby="navbarDropdownMenuLink" >
                 <li><a class="dropdown-item" href="{% url 'accounts:my_profile' %}">الملف الشخصي</a></li>
                 {% comment %} <li><a class="dropdown-item" href="{% url 'change_password' %}">Change Password</a></li> {% endcomment %}
-                <li><a class="dropdown-item" href="#">تغيير كلمة السر</a></li>
+                <li><a class="dropdown-item" href="{% url 'accounts:change_password' %}">تغيير كلمة السر</a></li>
                 <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">تسجيل الخروج</a></li>
             </ul>
             <a class="nav-link active" aria-current="page" href="{% url 'accounts:home' %}">{{ user.full_name }}</a>
