@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect,get_object_or_404
+from django.http import HttpResponse
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from .forms import AddSupervisorForm,LoginForm,EditSupervisorForm,AddStudentForm,EditStudentForm,EditAcademicStudentLevel,AddAcademicStudentLevel
@@ -58,7 +59,12 @@ def signup(request):
 
     return render(request, 'register.html', {'form': form})
 
-
+@login_required
+@is_supervisor
+def my_profile(request):
+    user=request.user
+    
+    return render(request,'my_profile.html',{'user':user})
 
 
 #-----------------------------Supervisor Management------------------------------
@@ -146,7 +152,6 @@ def supervisor_search(request):
     myfilter = CustomUserFilter(request.GET,queryset=supervisors)
     
     return render(request,'supervisor_search.html', {'myfilter': myfilter})
-
 
 
 
