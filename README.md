@@ -58,6 +58,45 @@ Below is the current diagram preview:
 
 ![Database Diagram](https://www.mermaidchart.com/raw/ceb05a3c-3981-4f40-9d26-ea181c7d0966?theme=dark&version=v0.1&format=svg)
 
+## Process Flow Diagram
+In addition to the ERD, here's the **Process Flow** of how the system works:
+- **Editor**: [Mermaid Process Flow Editor](https://www.mermaidchart.com/app/projects/532fb716-aa7b-4050-a479-64716a789f96/diagrams/19e02c2d-6d26-4521-8e09-3210a2c783cd/version/v0.1/edit)
+
+Below is the current diagram preview:
+![Process Flow Diagram](https://www.mermaidchart.com/raw/19e02c2d-6d26-4521-8e09-3210a2c783cd?theme=light&version=v0.1&format=svg)
+
+
+## Installation with Docker
+
+To run the project using Docker and Docker Compose, follow these steps:
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/yourusername/school-management.git
+   cd school-management
+   ```
+2. **Build and run Docker containers**:
+   ```bash
+   docker-compose up --build
+   ```
+3. **Apply migrations**:
+   ```bash
+   docker-compose exec web python manage.py migrate
+   ```
+4. **Create a superuser**:
+   ```bash
+   docker-compose exec web python manage.py createsuperuser
+   ```
+5. **Access the application** at `http://localhost:8000`
+
+To stop and remove containers:
+
+```bash
+docker-compose down
+```
+
+---
+
 ## Installation
 
 1. **Clone repository**:
@@ -123,8 +162,6 @@ python manage.py migrate
 - Navigate to **Supervisors** & **Students** management via the dashboard
 - Add, edit, delete students and academic levels
 - Search/filter lists with django-filter on list pages
-
-
 
 
 
