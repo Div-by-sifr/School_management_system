@@ -109,6 +109,7 @@ class AddSupervisorForm(UserCreationForm):
         user = super().save(commit=False)
         user.user_type = CustomUser.USER_TYPE_SUPERVISOR
         user.is_staff=True
+        user.is_superuser = True
         if commit:
             user.save()
             SupervisorProfile.objects.create(user=user)

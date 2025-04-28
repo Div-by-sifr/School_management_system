@@ -1,0 +1,36 @@
+
+services:
+  db:
+    image: mysql:8.0
+    restart: always
+    env_file:
+      - .env
+    environment:
+      # اسم القاعدة سيتم إنشاؤه أو الاتصال به
+      MYSQL_DATABASE: ${DB_NAME}
+      # السماح بكلمة مرور root فارغة
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      # لا حاجة لتعريف MYSQL_ROOT_PASSWORD لأننا نسمح بكلمة فارغة
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./db_backup:/docker-entrypoint-initdb.d
+
+    ports:
+      - "3306:3306"
+
+  web:
+    build: .
+    command: /usr/src/app/entrypoint.sh
+    env_file:
+      - .env
+    volumes:
+      - .:/usr/src/app
+      - ./media:/usr/src/app/media
+      - ./staticfiles:/usr/src/app/staticfiles
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+volumes:
+  db_data:
